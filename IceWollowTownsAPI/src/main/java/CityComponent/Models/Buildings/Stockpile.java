@@ -1,4 +1,4 @@
 package CityComponent.Models.Buildings;
 
-public class Stockpile {
+public class Stockpile extends Building{
 }

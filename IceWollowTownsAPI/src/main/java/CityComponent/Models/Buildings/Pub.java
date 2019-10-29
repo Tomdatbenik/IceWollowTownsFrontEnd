@@ -1,5 +1,5 @@
 package CityComponent.Models.Buildings;
 
-public class Pub extends Thread{
+public class Pub extends Building{
 
 }

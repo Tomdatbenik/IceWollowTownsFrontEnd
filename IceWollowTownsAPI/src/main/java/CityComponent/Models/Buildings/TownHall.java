@@ -1,4 +1,4 @@
 package CityComponent.Models.Buildings;
 
-public class TownHall {
+public class TownHall extends Building{
 }

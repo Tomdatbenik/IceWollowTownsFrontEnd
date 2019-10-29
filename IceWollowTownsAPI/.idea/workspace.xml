@@ -39,7 +39,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
@@ -90,6 +90,7 @@
       <option name="presentableId" value="Default" />
       <updated>1571820777862</updated>
       <workItem from="1571820780840" duration="343000" />
+      <workItem from="1572337753390" duration="3929000" />
     </task>
     <servers />
   </component>
