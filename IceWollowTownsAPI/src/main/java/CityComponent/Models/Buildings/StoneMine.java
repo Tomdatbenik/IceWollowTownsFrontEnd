@@ -1,4 +1,4 @@
 package CityComponent.Models.Buildings;
 
-public class StoneMine {
+public class StoneMine extends Building{
 }

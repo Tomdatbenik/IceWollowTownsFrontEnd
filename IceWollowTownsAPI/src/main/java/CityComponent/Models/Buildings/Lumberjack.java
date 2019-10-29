@@ -1,4 +1,4 @@
 package CityComponent.Models.Buildings;
 
-public class Lumberjack {
+public class Lumberjack extends Building{
 }

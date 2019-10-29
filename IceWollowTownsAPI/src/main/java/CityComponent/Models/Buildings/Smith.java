@@ -1,4 +1,4 @@
 package CityComponent.Models.Buildings;
 
-public class Smith {
+public class Smith extends Building{
 }
