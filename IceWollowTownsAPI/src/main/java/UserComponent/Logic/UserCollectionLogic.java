@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserCollectionLogic {
-    public void Login() {
+    public User Login() {
+        User user = new User();
 
+        return user;
     }
 
     public void AddUser() {
