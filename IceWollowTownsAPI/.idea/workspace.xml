@@ -2,6 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="533bfc3e-5ee2-47ff-90b0-f7811af67b62" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/SignInController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/friend/IFriendCollectionRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/friend/IFriendContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/user/IUserCollectionRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/user/IUserContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/user/IUserRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Logic/FriendCollectionLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Logic/UserCollectionLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Logic/UserLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Models/Friend.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Models/FriendList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -44,16 +56,16 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/UserComponent/Models" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\firem\Desktop\School\Semester_3\s36-eigen-project(IWT)\IceWollowTownsAPI\src\main\java\UserComponent\Models" />
       <recent name="C:\School\School\School\Fontys\Semester 3\IceWollowTowns\IceWollowTowns\IceWollowTownsAPI\src\main\java\SocialHub\Interfaces\FriendCollection" />
       <recent name="C:\School\School\School\Fontys\Semester 3\IceWollowTowns\IceWollowTowns\IceWollowTownsAPI\src\main\java\SocialHub\Interfaces\Context" />
       <recent name="C:\School\School\School\Fontys\Semester 3\IceWollowTowns\IceWollowTowns\IceWollowTownsAPI\src\main\java\SocialHub\Interfaces\Repo" />
       <recent name="C:\School\School\School\Fontys\Semester 3\IceWollowTowns\IceWollowTowns\IceWollowTownsAPI\src\main\java\SocialHub\Dal\Context" />
-      <recent name="C:\School\School\School\Fontys\Semester 3\IceWollowTowns\IceWollowTowns\IceWollowTownsAPI\src\main\java\SocialHub\Dal\Repo" />
     </key>
   </component>
   <component name="RunDashboard">
