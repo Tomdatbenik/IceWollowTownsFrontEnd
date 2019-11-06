@@ -1,18 +1,18 @@
 <template>
   <div id="app" class="container text-center">
-    <FriendList/>
+    <Navigation/>
   </div>
 </template>
 
 <script>
-import FriendList from "./components/FriendList.vue";
+import Navigation from "./components/Navigation.vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 export default {
   name: "app",
   components: {
-    FriendList
+    Navigation
   }
 };
 </script>
