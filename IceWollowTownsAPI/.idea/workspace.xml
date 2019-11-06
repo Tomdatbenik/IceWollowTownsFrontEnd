@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="533bfc3e-5ee2-47ff-90b0-f7811af67b62" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hello-world" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/AdventureGuild/Models/enums/AffectedResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AdventureGuild/Models/Expedition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdventureGuild/Models/Expedition.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +20,7 @@
         <option value="Kotlin File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -40,6 +40,7 @@
   <component name="ProjectId" id="1Sb88nAHrOjqCMM0iabhrYYREIl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -125,7 +126,7 @@
       <workItem from="1571820780840" duration="343000" />
       <workItem from="1572337753390" duration="8094000" />
       <workItem from="1572346767678" duration="3144000" />
-      <workItem from="1573027255959" duration="5956000" />
+      <workItem from="1573027255959" duration="6616000" />
     </task>
     <servers />
   </component>
