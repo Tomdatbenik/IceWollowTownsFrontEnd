@@ -1,4 +1,5 @@
-package main.java.AdventureGuild.Models;
+package AdventureGuild.Models;
 
 public class Expedition {
+
 }
