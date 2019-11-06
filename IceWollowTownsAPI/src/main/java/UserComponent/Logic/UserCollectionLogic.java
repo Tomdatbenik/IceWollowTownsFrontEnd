@@ -1,40 +1,25 @@
 package UserComponent.Logic;
 
+import UserComponent.Factories.UserFactory;
+import UserComponent.Interfaces.user.IUserCollectionRepo;
 import UserComponent.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserCollectionLogic {
-    public User Login() {
-        User user = new User();
+    private UserFactory userFactory = new UserFactory();
+    private IUserCollectionRepo userCollectionRepo = userFactory.CreateUserCollectionRepo();
 
-        return user;
-    }
+    public User Login(User _user) { return userCollectionRepo.Login(_user); }
 
-    public void AddUser() {
+    public void AddUser(User user) { userCollectionRepo.AddUser(user); }
 
-    }
+    public void RemoveUser(User user) { userCollectionRepo.RemoveUser(user); }
 
-    public void RemoveUser() {
+    public List<User> GetAllUsers() { return userCollectionRepo.GetAllUsers(); }
 
-    }
+    public User GetUserById(int id) { return userCollectionRepo.GetUserById(id); }
 
-    public List<User> GetAllUsers() {
-        List<User> users = new ArrayList<User>();
-
-        return users;
-    }
-
-    public User GetUserById(int Id) {
-        User user = new User();
-
-        return user;
-    }
-
-    public User GetUserByName(String name) {
-        User user = new User();
-
-        return user;
-    }
+    public User GetUserByName(String name) { return userCollectionRepo.GetUserByName(name); }
 }

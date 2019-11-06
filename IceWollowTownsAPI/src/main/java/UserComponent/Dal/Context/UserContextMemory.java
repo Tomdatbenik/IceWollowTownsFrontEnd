@@ -37,7 +37,12 @@ public class UserContextMemory implements IUserContext {
     }
 
     @Override
-    public void UpdatePassword(String password) {
+    public void Logout() {
+
+    }
+
+    @Override
+    public void UpdatePassword(String password, User user) {
 
     }
 }

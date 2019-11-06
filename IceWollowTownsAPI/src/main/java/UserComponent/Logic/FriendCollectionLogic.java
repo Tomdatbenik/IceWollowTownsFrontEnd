@@ -8,20 +8,12 @@ import UserComponent.Models.FriendList;
 import UserComponent.Models.User;
 
 public class FriendCollectionLogic {
-    FriendFactory friendFactory = new FriendFactory();
-    IFriendCollectionRepo friendCollectionRepo = friendFactory.CreateFriendCollectionRepo();
+    private FriendFactory friendFactory = new FriendFactory();
+    private IFriendCollectionRepo friendCollectionRepo = friendFactory.CreateFriendCollectionRepo();
 
-    public FriendList GetAllFriends(User user) {
-        FriendList friendList = friendCollectionRepo.GetAllFriends();
+    public FriendList GetAllFriends(User user) { return friendCollectionRepo.GetAllFriends(); }
 
-        return friendList;
-    }
+    public void RemoveFriend(Friend friend) { friendCollectionRepo.RemoveFriend(friend); }
 
-    public void RemoveFriend(Friend friend) {
-
-    }
-
-    public void AddFriend(Friend friend, User user) {
-
-    }
+    public void AddFriend(Friend friend, User user) { friendCollectionRepo.AddFriend(friend, user); }
 }

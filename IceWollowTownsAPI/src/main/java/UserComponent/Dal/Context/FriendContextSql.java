@@ -3,6 +3,7 @@ package UserComponent.Dal.Context;
 import UserComponent.Interfaces.friend.IFriendContext;
 import UserComponent.Models.Friend;
 import UserComponent.Models.FriendList;
+import UserComponent.Models.User;
 
 public class FriendContextSql implements IFriendContext {
 
@@ -17,7 +18,7 @@ public class FriendContextSql implements IFriendContext {
     }
 
     @Override
-    public void AddFriend(Friend friend) {
+    public void AddFriend(Friend friend, User user) {
 
     }
 }

@@ -3,6 +3,7 @@ package UserComponent.Dal.Repo;
 import UserComponent.Interfaces.friend.IFriendContext;
 import UserComponent.Models.Friend;
 import UserComponent.Models.FriendList;
+import UserComponent.Models.User;
 import org.springframework.stereotype.Controller;
 
 import javax.naming.Context;
@@ -22,5 +23,5 @@ public class FriendRepo implements IFriendContext {
     public void RemoveFriend(Friend friend) { Context.RemoveFriend(friend); }
 
     @Override
-    public void AddFriend(Friend friend) { Context.AddFriend(friend); }
+    public void AddFriend(Friend friend, User user) { Context.AddFriend(friend, user); }
 }

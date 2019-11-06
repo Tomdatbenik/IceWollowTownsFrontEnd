@@ -1,5 +1,9 @@
 package UserComponent.Interfaces.user;
 
+import UserComponent.Models.User;
+
 public interface IUserRepo {
-    void UpdatePassword(String password);
+    void Logout();
+
+    void UpdatePassword(String password, User user);
 }

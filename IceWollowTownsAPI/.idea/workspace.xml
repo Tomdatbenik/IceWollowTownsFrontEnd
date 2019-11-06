@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="533bfc3e-5ee2-47ff-90b0-f7811af67b62" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/FriendContextMemory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/FriendContextSql.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/UserContextMemory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/UserContextSql.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Repo/FriendRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Repo/UserRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Factories/FriendFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Factories/UserFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/FriendContextMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/FriendContextMemory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/FriendContextSql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/FriendContextSql.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/UserContextMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/UserContextMemory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/UserContextSql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Context/UserContextSql.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Repo/FriendRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Repo/FriendRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Dal/Repo/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Factories/UserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Factories/UserFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/friend/IFriendCollectionRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/friend/IFriendCollectionRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/user/IUserCollectionRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/user/IUserCollectionRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/user/IUserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Interfaces/user/IUserRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Logic/FriendCollectionLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Logic/FriendCollectionLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Logic/UserCollectionLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Logic/UserCollectionLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Models/FriendList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Models/FriendList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Logic/UserLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Logic/UserLogic.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +135,7 @@
       <workItem from="1571820780840" duration="343000" />
       <workItem from="1572337753390" duration="8094000" />
       <workItem from="1572346767678" duration="3144000" />
+      <workItem from="1573027255959" duration="4440000" />
     </task>
     <servers />
   </component>
@@ -157,16 +154,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

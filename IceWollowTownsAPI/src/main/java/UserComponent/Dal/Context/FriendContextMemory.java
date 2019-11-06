@@ -3,6 +3,7 @@ package UserComponent.Dal.Context;
 import UserComponent.Interfaces.friend.IFriendContext;
 import UserComponent.Models.Friend;
 import UserComponent.Models.FriendList;
+import UserComponent.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class FriendContextMemory implements IFriendContext {
     }
 
     @Override
-    public void AddFriend(Friend friend) {
+    public void AddFriend(Friend friend, User user) {
 
     }
 }

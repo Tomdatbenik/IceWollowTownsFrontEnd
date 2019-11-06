@@ -3,6 +3,7 @@ package UserComponent.Interfaces.friend;
 import UserComponent.Factories.FriendFactory;
 import UserComponent.Models.Friend;
 import UserComponent.Models.FriendList;
+import UserComponent.Models.User;
 
 import java.util.List;
 
@@ -11,5 +12,5 @@ public interface IFriendCollectionRepo {
 
     void RemoveFriend(Friend friend);
 
-    void AddFriend(Friend friend);
+    void AddFriend(Friend friend, User user);
 }
