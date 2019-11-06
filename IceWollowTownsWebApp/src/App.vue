@@ -1,27 +1,18 @@
 <template>
-  <div id="app">
+  <div id="app" class="container text-center">
     <FriendList/>
   </div>
 </template>
 
 <script>
-import FriendList from './components/FriendList.vue'
+import FriendList from "./components/FriendList.vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     FriendList
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

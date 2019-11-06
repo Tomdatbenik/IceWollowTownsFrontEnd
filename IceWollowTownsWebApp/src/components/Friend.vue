@@ -1,5 +1,5 @@
 <template>
-  <div class="friend">
+  <div class="  ">
     <h1>{{ friend }}</h1>
   </div>
 </template>
@@ -9,7 +9,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'FriendList',
+  name: 'Friend',
   props: {
     friend: null
   },
