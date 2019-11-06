@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="533bfc3e-5ee2-47ff-90b0-f7811af67b62" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/hello-world" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AdventureGuild/Models/Expedition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdventureGuild/Models/Expedition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserComponent/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserComponent/Models/User.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +125,7 @@
       <workItem from="1571820780840" duration="343000" />
       <workItem from="1572337753390" duration="8094000" />
       <workItem from="1572346767678" duration="3144000" />
-      <workItem from="1573027255959" duration="4959000" />
+      <workItem from="1573027255959" duration="5956000" />
     </task>
     <servers />
   </component>
