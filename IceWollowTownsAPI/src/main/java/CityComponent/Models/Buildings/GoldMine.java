@@ -1,4 +1,4 @@
-package CityComponent.Models.Buildings;
+package citycomponent.models.buildings;
 
 public class GoldMine extends Building{
 

@@ -1,4 +1,4 @@
-package CityComponent.Models;
+package citycomponent.models;
 
 public class City {
 }

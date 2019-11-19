@@ -1,12 +1,12 @@
 package AdventureGuild.Models.enums;
 
 public enum AffectedResource {
-    Wood,
-    Stone,
-    Food,
-    Iron,
-    Population,
-    Gold,
-    Adventurers,
-    Happiness;
+    WOOD,
+    STONE,
+    FOOD,
+    IRON,
+    POPULATION,
+    GOLD,
+    ADVENTURERS,
+    HAPPINESS;
 }

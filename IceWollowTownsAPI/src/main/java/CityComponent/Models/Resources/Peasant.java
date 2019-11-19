@@ -1,4 +1,4 @@
-package CityComponent.Models.Resources;
+package citycomponent.models.Resources;
 
 public class Peasant extends Resource{
 }

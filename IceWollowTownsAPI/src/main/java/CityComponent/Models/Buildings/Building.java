@@ -1,9 +1,7 @@
-package CityComponent.Models.Buildings;
+package citycomponent.models.buildings;
 
-import CityComponent.Models.Modifier.Buff;
-import CityComponent.Models.Modifier.Modifier;
-import CityComponent.Models.Resources.Gold;
-import CityComponent.Models.Resources.Resource;
+import citycomponent.models.Modifier.Modifier;
+import citycomponent.models.Resources.Resource;
 
 import java.util.List;
 
