@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
           <div v-if="!$auth.loading">
-             <button @click="GetToken">Get token</button>
+            <button @click="GetToken">{{token}}</button>
             <!-- show login when not authenticated -->
             <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
             <!-- show logout when authenticated -->
@@ -26,10 +26,15 @@
 </template>
 
 <script>
-import axios from "axios"
+//import axios from "axios";
 
 // @ is an alias to /src
 export default {
+  data() {
+    return {
+      token: null
+    };
+  },
   name: "login",
   components: {},
   beforeMount() {
@@ -38,7 +43,7 @@ export default {
   methods: {
     // Log the user in
     login() {
-      this.$auth.getTokenWithPopup();
+      this.$auth.loginWithRedirect();
     },
     // Log the user out
     logout() {
@@ -47,21 +52,7 @@ export default {
       });
     },
     GetToken() {
-      axios
-        .get(
-          "https://tomdatbenik.eu.auth0.com/authorize?response_type=code|token&client_id=YuP3gzjz4jk431LgbLB0r7YsoyCB1F6x&connection=CONNECTION&redirect_uri=http://localhost:8081&state=STATE"
-        )
-        .then(function(response) {
-          // handle success
-          console.log(response);
-        })
-        .catch(function(error) {
-          // handle error
-          console.log(error);
-        })
-        .finally(function() {
-          // always executed
-        });
+      console.log(this.$auth.auth0Client.isAuthenticated())
     }
   }
 };
