@@ -26,7 +26,7 @@
 </template>
 
 <script>
-//import axios from "axios";
+import axios from "axios";
 
 // @ is an alias to /src
 export default {
@@ -37,9 +37,6 @@ export default {
   },
   name: "login",
   components: {},
-  beforeMount() {
-    console.log(this.$auth);
-  },
   methods: {
     // Log the user in
     login() {
@@ -51,8 +48,22 @@ export default {
         returnTo: window.location.origin
       });
     },
-    GetToken() {
-      console.log(this.$auth.auth0Client.isAuthenticated())
+    async GetToken() {
+      console.log(this.$auth.auth0Client.isAuthenticated());
+      console.log(await this.$auth.auth0Client.getTokenSilently());
+      axios
+        .get("http://localhost:8080/friend")
+        .then(function(response) {
+          // handle success
+          console.log(response.data);
+        })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        })
+        .finally(function() {
+          // always executed
+        });
     }
   }
 };
