@@ -1,7 +1,10 @@
 <template>
   <div id="app" class="container">
-    <div id="nav">
-      <router-view/>
+    <div v-if="$auth.loading" id="nav">
+      <Loading/>
+    </div>
+    <div v-if="!$auth.loading">
+      <router-view />
     </div>
   </div>
 </template>
@@ -29,3 +32,12 @@
 }
 </style>
 
+<script>
+import Loading from "./components/Loading";
+
+export default {
+  components: {
+    Loading
+  }
+};
+</script>

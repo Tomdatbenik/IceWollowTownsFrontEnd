@@ -5,12 +5,12 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+
 // Import the Auth0 configuration
 import { domain, clientId } from "../auth_config.json";
 
 // Import the plugin here
 import { Auth0Plugin } from "./auth";
-
 
 Vue.use(Auth0Plugin, {
   domain,
