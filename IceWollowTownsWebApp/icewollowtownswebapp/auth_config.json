@@ -1,4 +1,5 @@
 {
     "domain": "tomdatbenik.eu.auth0.com",
-    "clientId": "YuP3gzjz4jk431LgbLB0r7YsoyCB1F6x"
+    "clientId": "YuP3gzjz4jk431LgbLB0r7YsoyCB1F6x",
+    "audience": "http://localhost:8080"
 }
