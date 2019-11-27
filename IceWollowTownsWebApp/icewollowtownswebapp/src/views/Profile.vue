@@ -1,23 +1,34 @@
 <template>
   <div class="row">
-        {{this.token}}
     <div class="col-6 offset-3">
-      <div class="card rounded">
-        <div class="card-header">
+      <div class="card bg-dark rounded border border-light text-light">
+        <div class="card-header border border-light">
           <div class="card-title">
-            <h4 class="display-4">IceWollowTowns</h4>
+            <h4 class="display-4">Profile</h4>
           </div>
         </div>
         <div class="card-body">
-          <div v-if="!$auth.loading">
-            <button @click="GetToken">{{token}}</button>
-            <!-- show login when not authenticated -->
-            <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
-            <!-- show logout when authenticated -->
-            <div v-if="$auth.isAuthenticated">
-              <h2>{{ $auth.user.name }}</h2>
-              <img :src="$auth.user.picture" />
-              <button @click="logout">Log out</button>
+          <div class="row">
+            <div class="col-6">
+              <div class="row">
+                <div class="col">
+                  <p class="text-left">Username:</p>
+                </div>
+                <div class="col">
+                  <p class="text-left">{{ $auth.user.name }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p class="text-left">Email:</p>
+                </div>
+                <div class="col">
+                  <p class="text-left">{{ $auth.user.email }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                <img class="mr-2 rounded img-thumpnail" width="200" height="200" :src="$auth.user.picture" />
             </div>
           </div>
         </div>
@@ -36,21 +47,12 @@ export default {
       token: null
     };
   },
-  name: "login",
+  name: "profile",
   components: {},
   methods: {
-    // Log the user in
-    login() {
-      this.$auth.loginWithRedirect();
-    },
-    // Log the user out
-    logout() {
-      this.$auth.logout({
-        returnTo: window.location.origin
-      });
-    },
     async GetToken() {
       const token = await this.$auth.getTokenSilently();
+      this.token = token;
       axios
         .get("http://localhost:8080/api/private", {
           headers: {

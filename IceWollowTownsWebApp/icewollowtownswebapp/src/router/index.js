@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
+import Profile from '../views/Profile.vue'
+import Settlement from '../views/Settlement.vue'
 import { authGuard } from "../auth/authGuard";
 
 Vue.use(VueRouter)
@@ -9,8 +10,14 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'login',
-    component: Login,
+    name: 'Settlement',
+    component: Settlement,
+    beforeEnter: authGuard
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile,
     beforeEnter: authGuard
   },
   {

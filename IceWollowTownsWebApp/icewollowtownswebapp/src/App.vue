@@ -1,15 +1,37 @@
 <template>
-  <div id="app" class="container">
-    <div v-if="$auth.loading" id="nav">
-      <Loading/>
-    </div>
-    <div v-if="!$auth.loading">
+<div class="h-100">
+    <div id="app" class="container-fluid bg-dark h-100" v-if="!$auth.loading">
+      <Navigation />
       <router-view />
+    </div>
+    <div v-else>
+      <Loading />
     </div>
   </div>
 </template>
 
 <style>
+
+.iceborder
+{
+  border: #000f97 solid 1px;
+}
+
+.iceborder-bottom
+{
+  border-bottom: #000f97 solid 1px;
+}
+
+.iceborder-left
+{
+  border-left: #000f97 solid 1px;
+}
+
+.iceborder-right
+{
+  border-right: #000f97 solid 1px;
+}
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,10 +56,12 @@
 
 <script>
 import Loading from "./components/Loading";
+import Navigation from "./components/Navigation";
 
 export default {
   components: {
-    Loading
+    Loading,
+    Navigation
   }
 };
 </script>
