@@ -3,6 +3,7 @@
     <div id="app" class="container-fluid bg-dark h-100" v-if="!$auth.loading">
       <Navigation />
       <router-view />
+      <Friendlist/>
     </div>
     <div v-else>
       <Loading />
@@ -57,11 +58,13 @@
 <script>
 import Loading from "./components/Loading";
 import Navigation from "./components/Navigation";
+import Friendlist from './components/FriendList'
 
 export default {
   components: {
     Loading,
-    Navigation
+    Navigation,
+    Friendlist
   }
 };
 </script>

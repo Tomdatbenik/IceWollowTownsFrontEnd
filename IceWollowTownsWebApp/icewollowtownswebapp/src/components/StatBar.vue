@@ -9,6 +9,8 @@
         <li class="list-group-item bg-dark text-light border-0">Stone: 0</li>
         <li class="list-group-item bg-dark text-light border-0">Iron: 0</li>
         <li class="list-group-item bg-dark text-light border-0">Food: 0</li>
+        <li class="list-group-item bg-dark text-light border-0">Population: 0</li>
+        <li class="list-group-item bg-dark text-light border-0">Adventurers: 0</li>
       </ul>
     </div>
   </div>

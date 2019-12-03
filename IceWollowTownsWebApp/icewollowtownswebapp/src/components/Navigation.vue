@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     ToggleStatbar() {
-      console.log(this.stats);
       if (!this.stats) {
         this.stats = true;
       } else {

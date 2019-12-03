@@ -13,6 +13,10 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  destroyed:function ()
+  {
+    console.log("Dead")
   }
 }
 </script>
