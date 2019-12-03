@@ -37,14 +37,12 @@ export default {
       );
     },
     Showfriend(Friend) {
-      var friends = {
-        Username: Friend.Username,
-      };
-      this.friends.push(friends);
+
+      this.friends.push(Friend);
     }
   },
   created: function() {
-    var socket = new SockJS("http://localhost:8080/IceWollowTownsWebsockets");
+    var socket = new SockJS("http://localhost:8080/IceWollowTownsWebsocket");
     this.stompClient = Stomp.over(socket);
     this.stompClient.connect({}, frame => {
       console.log("Connected: " + frame);
