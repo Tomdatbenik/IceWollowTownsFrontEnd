@@ -1,6 +1,6 @@
 <template>
   <div class="h-100">
-    <div id="app" class="container-fluid bg-dark h-100" v-if="!$auth.loading">
+    <div class="container-fluid bg-dark fill" v-if="!$auth.loading">
       <Navigation />
       <router-view />
       <Friendlist />
@@ -12,6 +12,12 @@
 </template>
 
 <style>
+
+html, 
+body {
+    height: 100%;
+}
+
 .iceborder {
   border: #000f97 solid 1px;
 }
@@ -62,8 +68,6 @@ export default {
     Navigation,
     Friendlist
   },
-  mounted: async function(){
-  }
 
 };
 </script>
