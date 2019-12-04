@@ -1,5 +1,6 @@
 import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
+import axios from "axios";
 
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = null;
@@ -58,6 +59,7 @@ export const useAuth0 = ({
         } finally {
           this.loading = false;
         }
+
       },
       /** Authenticates the user using the redirect method */
       loginWithRedirect(o) {
@@ -91,13 +93,12 @@ export const useAuth0 = ({
         redirect_uri: redirectUri
       });
 
-      if(await this.auth0Client.isAuthenticated())
-      {
+      if (await this.auth0Client.isAuthenticated()) {
         this.isAuthenticated = await this.auth0Client.isAuthenticated();
         this.user = await this.auth0Client.getUser();
         this.loading = false;
         return this;
-      }
+      }      
 
       try {
         // If the user is returning to the app after authentication..
@@ -119,6 +120,31 @@ export const useAuth0 = ({
         this.isAuthenticated = await this.auth0Client.isAuthenticated();
         this.user = await this.auth0Client.getUser();
         this.loading = false;
+
+        var token = await this.auth0Client.getTokenSilently();
+
+        axios
+          .get("http://localhost:8080/api/login", {
+            headers: {
+              authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
+            },
+            params: {
+              name: this.user.name,
+              email: this.user.email
+            }
+          })
+          .then(function (response) {
+            // handle success
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+          .finally(function () {
+            // always executed
+          });
+
       }
     }
   });

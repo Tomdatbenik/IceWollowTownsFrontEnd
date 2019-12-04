@@ -1,9 +1,9 @@
 <template>
-<div class="h-100">
+  <div class="h-100">
     <div id="app" class="container-fluid bg-dark h-100" v-if="!$auth.loading">
       <Navigation />
       <router-view />
-      <Friendlist/>
+      <Friendlist />
     </div>
     <div v-else>
       <Loading />
@@ -12,24 +12,19 @@
 </template>
 
 <style>
-
-.iceborder
-{
+.iceborder {
   border: #000f97 solid 1px;
 }
 
-.iceborder-bottom
-{
+.iceborder-bottom {
   border-bottom: #000f97 solid 1px;
 }
 
-.iceborder-left
-{
+.iceborder-left {
   border-left: #000f97 solid 1px;
 }
 
-.iceborder-right
-{
+.iceborder-right {
   border-right: #000f97 solid 1px;
 }
 
@@ -58,13 +53,17 @@
 <script>
 import Loading from "./components/Loading";
 import Navigation from "./components/Navigation";
-import Friendlist from './components/FriendList'
+import Friendlist from "./components/FriendList";
+
 
 export default {
   components: {
     Loading,
     Navigation,
     Friendlist
+  },
+  mounted: async function(){
   }
+
 };
 </script>

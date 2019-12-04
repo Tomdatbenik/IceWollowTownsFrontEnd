@@ -16,7 +16,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link text-light" to="/home">Settlement</router-link>
+            <router-link class="nav-link text-light" to="/">Settlement</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link text-light" to="/home">Buildings</router-link>

@@ -5,6 +5,8 @@
         <div class="card-header">
           <div class="card-title">
             <h4 class="display-4">Settlement</h4>
+
+              <button v-on:click="GetToken"></button>
           </div>
         </div>
         <div class="card-body"></div>
@@ -30,7 +32,7 @@ export default {
       const token = await this.$auth.getTokenSilently();
       this.token = token;
       axios
-        .get("http://localhost:8080/api/private", {
+        .get("http://localhost:8080/api/settlement", {
           headers: {
             authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
           }
