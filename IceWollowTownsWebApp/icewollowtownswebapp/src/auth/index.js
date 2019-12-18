@@ -124,7 +124,7 @@ export const useAuth0 = ({
         var token = await this.auth0Client.getTokenSilently();
 
         axios
-          .get("http://localhost:8080/api/login", {
+          .get("http://localhost:8082/api/login", {
             headers: {
               authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
             },
