@@ -17,9 +17,14 @@
 </template>
 
 <script>
+    // import VueNativeSock from 'vue-native-websocket'
+
 export default {
   name: "Statbar",
-  components: {}
+  components: {},
+  created : function () {
+    this.$store.dispatch('SetWood', 1);
+  }
 };
 </script>
 

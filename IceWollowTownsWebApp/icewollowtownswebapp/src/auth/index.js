@@ -1,6 +1,7 @@
 import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
 import axios from "axios";
+import store from '../store/index';
 
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = null;
@@ -20,6 +21,7 @@ export const useAuth0 = ({
 
   // The 'instance' is simply a Vue object
   instance = new Vue({
+    store,
     data() {
       return {
         loading: true,
@@ -49,7 +51,7 @@ export const useAuth0 = ({
       },
       /** Handles the callback when logging in using a redirect */
       async handleRedirectCallback() {
-        this.loading = true;
+        this.$store.dispatch('SetLoading', true);
         try {
           await this.auth0Client.handleRedirectCallback();
           this.user = await this.auth0Client.getUser();
@@ -85,6 +87,7 @@ export const useAuth0 = ({
     },
     /** Use this lifecycle method to instantiate the SDK client */
     async created() {
+      this.$store.dispatch('SetLoading', true);
       // Create a new instance of the SDK client using members of the given options object
       this.auth0Client = await createAuth0Client({
         domain: options.domain,
@@ -123,6 +126,12 @@ export const useAuth0 = ({
 
         var token = await this.auth0Client.getTokenSilently();
 
+        var user = {
+          email : this.user.email,
+          username : this.user.name
+        }
+        
+        this.$store.dispatch('SetUser', user);
         axios
           .get("http://localhost:8082/api/login", {
             headers: {
@@ -133,17 +142,14 @@ export const useAuth0 = ({
               email: this.user.email
             }
           })
-          .then(function (response) {
-            // handle success
+          .then(response => {
             console.log(response.data);
-          })
+            this.$store.dispatch('SetLoading', false);
+          }) 
           .catch(function (error) {
             // handle error
             console.log(error);
           })
-          .finally(function () {
-            // always executed
-          });
 
       }
     }

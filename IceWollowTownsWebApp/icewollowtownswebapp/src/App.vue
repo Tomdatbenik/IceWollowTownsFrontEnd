@@ -1,6 +1,6 @@
 <template>
   <div class="h-100">
-    <div class="container-fluid bg-dark fill" v-if="!$auth.loading">
+    <div class="container-fluid bg-dark fill" v-if="!$store.getters.DoneLoading">
       <Navigation />
       <router-view />
       <!-- <Friendlist /> -->
