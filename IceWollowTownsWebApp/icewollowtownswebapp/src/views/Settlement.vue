@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import axios from "axios";
 
 // @ is an alias to /src
 export default {
@@ -27,28 +26,11 @@ export default {
   },
   name: "Settlement",
   components: {},
+  mounted: function (){
+    this.$store.dispatch('FetchSettlement');
+  },
   methods: {
-    async GetToken() {
-      const token = await this.$auth.getTokenSilently();
-      this.token = token;
-      axios
-        .get("http://localhost:8080/api/settlement", {
-          headers: {
-            authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
-          }
-        })
-        .then(function(response) {
-          // handle success
-          console.log(response.data);
-        })
-        .catch(function(error) {
-          // handle error
-          console.log(error);
-        })
-        .finally(function() {
-          // always executed
-        });
-    }
+
   }
 };
 </script>

@@ -1,7 +1,14 @@
 <template>
-  <div class="row" v-if="!$auth.loading">
-    <div class="col-6 offset-3">
-      <div class="loader"></div>
+  <div>
+    <div class="row mt-5">
+      <div class="col-4 offset-4">
+        <div class="loader"></div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-4 offset-4">
+        <h1 class="display-5 text-center text-white">{{msg}}</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -9,7 +16,8 @@
 <script>
 export default {
   name: "Loading",
-  components: {}
+  components: {},
+  props: ['msg']
 };
 </script>
 
@@ -22,6 +30,7 @@ export default {
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
+  margin: auto;
 }
 
 /* Safari */

@@ -1,21 +1,25 @@
 <template>
   <div class="h-100">
-    <div class="container-fluid bg-dark fill" v-if="!$store.getters.DoneLoading">
-      <Navigation />
-      <router-view />
-      <!-- <Friendlist /> -->
+    <div class="container-fluid bg-dark fill" v-if="!$store.getters.Loading">
+      <div v-if="$store.getters.SettlementLoading">
+        <Navigation />
+        <router-view />
+        <!-- <Friendlist /> -->
+      </div>
+      <div v-else class="container-fluid">
+        <Loading msg="Loading settlement" />
+      </div>
     </div>
-    <div v-else>
-      <Loading />
+    <div v-if="$store.getters.Loading" class="container-fluid">
+      <Loading msg="Authenticating" />
     </div>
   </div>
 </template>
 
 <style>
-
-html, 
+html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 .iceborder {
@@ -61,13 +65,11 @@ import Loading from "./components/Loading";
 import Navigation from "./components/Navigation";
 // import Friendlist from "./components/FriendList";
 
-
 export default {
   components: {
     Loading,
-    Navigation,
+    Navigation
     // Friendlist
-  },
-
+  }
 };
 </script>

@@ -132,6 +132,8 @@ export const useAuth0 = ({
         }
         
         this.$store.dispatch('SetUser', user);
+        this.$store.dispatch('SetToken', token);
+        
         axios
           .get("http://localhost:8082/api/login", {
             headers: {

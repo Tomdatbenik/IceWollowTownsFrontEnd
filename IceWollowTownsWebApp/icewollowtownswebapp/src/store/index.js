@@ -17,7 +17,8 @@ export default new Vuex.Store({
             email : '',
             username : ''
         },
-        user_loading : false
+        user_loading : false,
+        token: "",
     },
     mutations: {
         SET_USER(state,user)
@@ -27,6 +28,10 @@ export default new Vuex.Store({
         SET_USER_LOADING(state, loading)
         {
             state.user_loading = loading;
+        },
+        SET_TOKEN(state, token)
+        {
+            state.token = token;
         }
     },
     actions: {
@@ -36,13 +41,21 @@ export default new Vuex.Store({
         },
         SetLoading(context, loading)
         {
-            context,this.commit('SET_USER_LOADING', loading)
+            context.commit('SET_USER_LOADING', loading)
+        },
+        SetToken(context, token)
+        {
+            context.commit('SET_TOKEN',token)
         }
     },
     getters: {
-        DoneLoading: state =>
+        Loading: state =>
         {
             return state.user_loading;
+        },
+        Token:state=>
+        {
+            return state.token;
         }
     },
 })
