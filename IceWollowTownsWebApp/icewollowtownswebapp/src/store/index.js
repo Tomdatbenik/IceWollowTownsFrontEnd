@@ -1,19 +1,23 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from "axios";
 
 //import settlementModule
 import SettlementModule from '../store/settlement'
 import Resources from '../store/resources'
+import Api from '../store//api'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules: {
         settlement: SettlementModule,
-        resources : Resources
+        resources : Resources,
+        api : Api
     },
     state: {
         user : {
+            id: '',
             email : '',
             username : ''
         },
@@ -21,6 +25,61 @@ export default new Vuex.Store({
         token: "",
     },
     mutations: {
+        LOGIN(state,user)
+        {
+            axios
+            .get(this.getters.UserBaseUrl + "/api/getUserByEmail", {
+              headers: {
+                authorization: `Bearer ${state.token}` // send the access token through the 'Authorization' header
+              },
+              params: {
+                email: state.user.email
+              }
+            })
+            .then(response => {
+              if (response.data == "") {
+                axios
+                  .get(this.getters.UserBaseUrl + "/api/addUser", {
+                    headers: {
+                      authorization: `Bearer ${state.token}` // send the access token through the 'Authorization' header
+                    },
+                    params: {
+                      email: state.user.email,
+                      username: state.user.username
+                    }
+                  })
+                  .then(res => {
+                    user = {
+                      id : res.data.id,
+                      email : res.data.email,
+                      username: res.data.username
+                    }
+  
+                    this.dispatch('SetUser', user)
+                    this.dispatch('SetLoading', false);
+                  })
+                  .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                  })
+              }
+              else{
+                user = {
+                  id : response.data.id,
+                  email : response.data.email,
+                  username: response.data.username
+                }
+  
+                this.dispatch('SetUser', user)
+                this.dispatch('SetLoading', false);
+              }
+  
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+        },
         SET_USER(state,user)
         {
             state.user = user;
@@ -35,6 +94,10 @@ export default new Vuex.Store({
         }
     },
     actions: {
+        Login(context,user)
+        {
+            context.commit('LOGIN', user);
+        },
         SetUser(context, user)
         {
             context.commit('SET_USER', user);

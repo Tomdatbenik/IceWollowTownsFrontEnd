@@ -1,6 +1,5 @@
 import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
-import axios from "axios";
 import store from '../store/index';
 
 /** Define a default action to perform after authentication */
@@ -101,7 +100,7 @@ export const useAuth0 = ({
         this.user = await this.auth0Client.getUser();
         this.loading = false;
         return this;
-      }      
+      }
 
       try {
         // If the user is returning to the app after authentication..
@@ -127,32 +126,13 @@ export const useAuth0 = ({
         var token = await this.auth0Client.getTokenSilently();
 
         var user = {
-          email : this.user.email,
-          username : this.user.name
+          email: this.user.email,
+          username: this.user.name
         }
-        
+
         this.$store.dispatch('SetUser', user);
         this.$store.dispatch('SetToken', token);
-        
-        axios
-          .get("http://localhost:8082/api/login", {
-            headers: {
-              authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
-            },
-            params: {
-              name: this.user.name,
-              email: this.user.email
-            }
-          })
-          .then(response => {
-            console.log(response.data);
-            this.$store.dispatch('SetLoading', false);
-          }) 
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          })
-
+        this.$store.dispatch('Login',user)
       }
     }
   });
