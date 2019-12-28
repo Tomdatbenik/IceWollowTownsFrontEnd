@@ -6,7 +6,6 @@
           <div class="card-title">
             <h4 class="display-4">Settlement</h4>
 
-              <button v-on:click="GetToken"></button>
           </div>
         </div>
         <div class="card-body"></div>
@@ -27,7 +26,7 @@ export default {
   name: "Settlement",
   components: {},
   mounted: function (){
-    this.$store.dispatch('FetchSettlement');
+
   },
   methods: {
 

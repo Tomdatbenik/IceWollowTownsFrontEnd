@@ -1,7 +1,7 @@
 <template>
   <div class="h-100">
     <div class="container-fluid bg-dark fill" v-if="!$store.getters.Loading">
-      <div v-if="$store.getters.SettlementLoading">
+      <div v-if="!$store.getters.SettlementLoading">
         <Navigation />
         <router-view />
         <!-- <Friendlist /> -->
