@@ -22,7 +22,7 @@
             <router-link class="nav-link text-light" to="/home">Buildings</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link text-light" to="/home">Merchant guild</router-link>
+            <router-link class="nav-link text-light" to="/merchantguild">Merchant guild</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link text-light" to="/home">Adventurer guild</router-link>

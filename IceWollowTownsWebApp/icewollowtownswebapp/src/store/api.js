@@ -1,7 +1,8 @@
 export default {
     state: {
         user: "http://localhost:8082",
-        settlement: "http://localhost:8084"
+        settlement: "http://localhost:8084",
+        merchantguild: "http://localhost:8086"
     },
     mutations: {
        
@@ -15,6 +16,10 @@ export default {
         {
             return state.settlement;
         },
+        MerchantGuildBaseUrl: state =>
+        {
+            return state.merchantguild;
+        }
     },
     actions: {
 
