@@ -29,6 +29,10 @@ export default {
         {
             return state.settlementLoading;
         },
+        getSettlement: state=>
+        {
+            return state.settlement;
+        }
     },
     actions: {
         FetchSettlement(context) {
