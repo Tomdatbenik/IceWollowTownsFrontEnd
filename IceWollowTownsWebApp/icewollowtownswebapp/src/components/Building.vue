@@ -15,9 +15,14 @@
                 <td>Description:</td>
                 <td>{{building.description}}</td>
               </tr>
-              <tr v-if="building.resource != null">
+              <tr v-if="building.resource != null && building.income != 0">
                 <td>Income:</td>
                 <td>{{building.income}} {{building.resource.name}}</td>
+              </tr>
+              <tr v-if="building.maxPopulation != null">
+                <td>Population:</td>
+                <td v-if="building.maxPopulation == 1">{{building.maxPopulation}} person</td>
+                <td v-else>{{building.maxPopulation}} persons</td>
               </tr>
               <tr v-if="building.resource != null">
                 <td>Resource name:</td>

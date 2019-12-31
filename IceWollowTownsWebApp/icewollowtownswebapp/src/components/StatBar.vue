@@ -17,13 +17,45 @@
 </template>
 
 <script>
-    // import VueNativeSock from 'vue-native-websocket'
+// import VueNativeSock from 'vue-native-websocket'
+import VueNativeSock from "vue-native-websocket";
+import store from '../store/index.js'
+
+import Vue from "vue";
+Vue.use(VueNativeSock, store.getters.stockpileWebsocket, {
+  reconnection: true, // (Boolean) whether to reconnect automatically (false)
+  reconnectionAttempts: 5, // (Number) number of reconnection attempts before giving up (Infinity),
+  reconnectionDelay: 3000 // (Number) how long to initially wait before attempting a new (1000)
+});
 
 export default {
   name: "Statbar",
   components: {},
-  created : function () {
+  data: function() {
+    return {
+      Message: {
+        content: "",
+        type: "CONNECT"
+      },
+      Chat: []
+    };
+  },
+  created: function() {
+     this.$store.dispatch('ConnectWithStockpileWebsocket')
 
+    this.$options.sockets.onmessage = data => this.messageReceived(data);
+    this.SendMessage();
+  },
+  methods: {
+    SendMessage: function() {
+      this.Message;
+      this.Message.type = "CONNECT";
+
+      this.$socket.send(JSON.stringify(this.Message));
+    },
+    messageReceived: function(data) {
+      this.Chat.push(data.data);
+    }
   }
 };
 </script>
