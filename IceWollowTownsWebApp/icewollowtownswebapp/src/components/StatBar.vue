@@ -23,13 +23,14 @@ export default {
   name: "Statbar",
   components: {},
   created : function () {
-    this.$store.dispatch('SetWood', 1);
+
   }
 };
 </script>
 
 <style>
 .overlay {
+  border-top: 2px solid;
   border-bottom: 1px solid;
   border-left: 1px solid;
   border-radius: 0px 0px 0px 5px;
