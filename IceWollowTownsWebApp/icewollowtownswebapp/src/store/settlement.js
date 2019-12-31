@@ -41,6 +41,8 @@ export default {
 
             context.commit('SET_SETTLEMENT_LOADING', true)
 
+            console.log(this.getters.User.id);
+
             axios
                 .get(this.getters.SettlementBaseUrl + "/api/getsettlement", {
                     headers: {
