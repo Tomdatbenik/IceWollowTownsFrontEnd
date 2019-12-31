@@ -130,7 +130,7 @@ export const useAuth0 = ({
           username: this.user.name
         }
 
-        await this.$store.dispatch('SetUser', user);
+        this.$store.dispatch('SetUser', user);
         this.$store.dispatch('SetToken', token);
         this.$store.dispatch('Login',user)
       }

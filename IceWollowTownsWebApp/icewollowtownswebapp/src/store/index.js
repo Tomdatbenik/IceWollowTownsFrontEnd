@@ -57,6 +57,7 @@ export default new Vuex.Store({
                   email: res.data.email,
                   username: res.data.username
                 }
+                this.dispatch('SetUser', user)
               })
               .catch(function (error) {
                 // handle error
@@ -69,11 +70,12 @@ export default new Vuex.Store({
               email: response.data.email,
               username: response.data.username
             }
+            this.dispatch('SetUser', user)
           }
 
-          this.dispatch('SetUser', user)
+
           this.dispatch('SetLoading', false);
-          this.dispatch('FetchSettlement');
+          this.dispatch('FetchSettlement',user);
 
         })
         .catch(function (error) {
