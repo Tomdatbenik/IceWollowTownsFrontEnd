@@ -154,6 +154,69 @@ export default {
             })
 
             return expeditions
+        },
+        async RewardPlayer(context, expedition) {
+            var token = this.getters.Token
+
+            await axios
+            .request({
+                url: "/api/rewardplayer",
+                method: "get" ,
+                baseURL: this.getters.AdventurersGuildBaseUrl,
+                headers: {
+                    authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
+                },
+                params:{
+                    userid: this.getters.User.id,
+                    expeditionid: expedition.id
+                }
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+        },
+        async TrainAdventurers(context, amount) {
+            var token = this.getters.Token
+
+            await axios
+            .request({
+                url: "/api/trainadventurers",
+                method: "get" ,
+                baseURL: this.getters.AdventurersGuildBaseUrl,
+                headers: {
+                    authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
+                },
+                params:{
+                    userid: this.getters.User.id,
+                    amount: amount
+                }
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+        },
+        async HireAdventurers(context, amount) {
+            var token = this.getters.Token
+
+            await axios
+            .request({
+                url: "/api/hireadventurers",
+                method: "get" ,
+                baseURL: this.getters.AdventurersGuildBaseUrl,
+                headers: {
+                    authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
+                },
+                params:{
+                    userid: this.getters.User.id,
+                    amount: amount
+                }
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
         }
     }
 }
