@@ -6,7 +6,7 @@ import axios from "axios";
 import SettlementModule from '../store/settlement'
 import Resources from '../store/resources'
 import Api from '../store//api'
-import MerchantGuild from '../store/merchantguild'
+import Guilds from '../store/guilds'
 
 Vue.use(Vuex);
 
@@ -15,7 +15,7 @@ export default new Vuex.Store({
         settlement: SettlementModule,
         resources : Resources,
         api : Api,
-        merchantguild : MerchantGuild
+        guilds : Guilds
     },
     state: {
         user : {

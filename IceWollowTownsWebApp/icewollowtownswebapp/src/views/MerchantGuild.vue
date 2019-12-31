@@ -70,7 +70,6 @@ export default {
       stone: null,
       food: null,
       wood: null,
-      token: null
     };
   },
   name: "merchantguild",
