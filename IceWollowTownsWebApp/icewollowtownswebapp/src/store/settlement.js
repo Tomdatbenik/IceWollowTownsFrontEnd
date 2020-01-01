@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default {
     state: {
-        settlement:{
+        settlement: {
             id: 0,
             goldmines: [],
             houses: [],
@@ -13,8 +13,17 @@ export default {
             stockpile: {},
             townHall: {},
         },
+        construction: {
+            goldmines: [],
+            houses: [],
+            ironmine: [],
+            lumberjacks: [],
+            smiths: [],
+            stonemines: [],
+            stockpile: {},
+            townHall: {},
+        },
         settlementLoading: false,
-        settlement_private_api_base_url: "localhost:8084/api/private",
     },
     mutations: {
         SET_SETTLEMENT(state, settlement) {
@@ -23,62 +32,97 @@ export default {
         SET_SETTLEMENT_LOADING(state, loading) {
             state.settlementLoading = loading;
         },
+        SET_CONSTRUCTION(state, construction) {
+            state.construction = construction;
+        }
     },
     getters: {
-        SettlementLoading: state =>
-        {
+        SettlementLoading: state => {
             return state.settlementLoading;
         },
-        getSettlement: state=>
-        {
+        getSettlement: state => {
             return state.settlement;
+        },
+        getConstruction: state => {
+            return state.construction;
         }
     },
     actions: {
-        FetchSettlement(context) {
+        FetchSettlement(context, User) {
 
             var token = this.getters.Token
 
             context.commit('SET_SETTLEMENT_LOADING', true)
-
-            console.log(this.getters.User.id);
 
             axios
                 .get(this.getters.SettlementBaseUrl + "/api/getsettlement", {
                     headers: {
                         authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
                     },
-                    params:{
-                        user_id : this.getters.User.id
+                    params: {
+                        user_id: User.id
                     }
                 })
                 .then(response => {
-                    if(response.data == "")
-                    {
+                    if (response.data == "") {
                         axios
-                        .get(this.getters.SettlementBaseUrl + "/api/createsettlement", {
-                            headers: {
-                                authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
-                            },
-                            params:{
-                                user_id : this.getters.User.id
-                            }
-                        })
-                        .then(res=> {
-                            context.commit("SET_SETTLEMENT",res.data)
-                            context.commit('SET_SETTLEMENT_LOADING', false)
-                        })
-                        .catch(function (error) {
-                            // handle error
-                            console.log(error);
-                        })
-                        .finally(function () {
-                            // always executed
-                        });
+                            .get(this.getters.SettlementBaseUrl + "/api/createsettlement", {
+                                headers: {
+                                    authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
+                                },
+                                params: {
+                                    user_id: User.id
+                                }
+                            })
+                            .then(res => {
+                                context.commit("SET_SETTLEMENT", res.data)
+
+                                axios
+                                    .get(this.getters.SettlementBaseUrl + "/api/getconstruction", {
+                                        headers: {
+                                            authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
+                                        },
+                                        params: {
+                                            user_id: User.id
+                                        }
+                                    })
+                                    .then(res => {
+                                        context.commit("SET_CONSTRUCTION", res.data)
+                                        context.commit('SET_SETTLEMENT_LOADING', false)
+                                    })
+                                    .catch(function (error) {
+                                        // handle error
+                                        console.log(error);
+                                    })
+
+                            })
+                            .catch(function (error) {
+                                // handle error
+                                console.log(error);
+                            })
+                            .finally(function () {
+                                // always executed
+                            });
                     }
-                    else{
-                        context.commit("SET_SETTLEMENT",response.data)
-                        context.commit('SET_SETTLEMENT_LOADING', false)
+                    else {
+                        context.commit("SET_SETTLEMENT", response.data)
+                        axios
+                            .get(this.getters.SettlementBaseUrl + "/api/getconstruction", {
+                                headers: {
+                                    authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
+                                },
+                                params: {
+                                    user_id: User.id
+                                }
+                            })
+                            .then(res => {
+                                context.commit("SET_CONSTRUCTION", res.data)
+                                context.commit('SET_SETTLEMENT_LOADING', false)
+                            })
+                            .catch(function (error) {
+                                // handle error
+                                console.log(error);
+                            })
                     }
                 })
                 .catch(function (error) {

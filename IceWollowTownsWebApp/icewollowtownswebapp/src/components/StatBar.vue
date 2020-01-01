@@ -40,7 +40,7 @@ export default {
       Chat: []
     };
   },
-  created: function() {
+  mounted: function() {
      this.$store.dispatch('ConnectWithStockpileWebsocket')
 
     this.$options.sockets.onmessage = data => this.messageReceived(data);
