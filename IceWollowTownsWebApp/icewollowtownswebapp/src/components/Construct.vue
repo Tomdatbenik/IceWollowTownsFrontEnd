@@ -66,7 +66,7 @@
               </tr>
             </table>
 
-            <button type="button" class="btn btn-primary mt-4">Build</button>
+            <button type="button" class="btn btn-primary mt-4" v-on:click="TryBuildBuilding(building.name)" >Build</button>
           </div>
         </div>
       </div>
@@ -78,7 +78,12 @@
 export default {
   name: "Constcut",
   components: {},
-  props: ["building"]
+  props: ["building"],
+  methods: {
+    TryBuildBuilding: function (type) {
+      this.$store.dispatch("TryBuildBuilding", type)  
+    }
+  }
 };
 </script>
 

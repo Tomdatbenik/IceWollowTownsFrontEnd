@@ -26,6 +26,10 @@ export default {
         {
             return state.stockpile;
         },
+        getMessage: state=>
+        {
+            return state.message;
+        }
     },
     actions: {
         ConnectWithStockpileWebsocket(context)

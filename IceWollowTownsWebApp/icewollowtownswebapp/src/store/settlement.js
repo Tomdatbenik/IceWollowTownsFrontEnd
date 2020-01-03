@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Vue from 'vue'
 
 export default {
     state: {
@@ -132,6 +133,78 @@ export default {
                 .finally(function () {
                     // always executed
                 });
+        },
+        TryBuildBuilding: function (context, type) {
+            axios
+                .get(this.getters.SettlementBaseUrl + "/api/buildbuilding", {
+                    headers: {
+                        authorization: `Bearer ${this.getters.Token}` // send the access token through the 'Authorization' header
+                    },
+                    params: {
+                        user_id: this.getters.User.id,
+                        type: type.toUpperCase()
+                    }
+                })
+                .then(res => {
+                    if (res.data == true) {
+                         Vue.toasted.show("Building finishished!", {
+                            theme: "toasted-primary",
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                        
+                        context.dispatch("FetchSettlement", this.getters.User)
+                    }
+                    else {
+                        Vue.toasted.show("Building failed!", {
+                            theme: "toasted-primary",
+                            type: "error",
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }
+
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+        },
+        TryUpgradeBuilding: function (context, Building) {
+            axios
+                .get(this.getters.SettlementBaseUrl + "/api/upgradebuilding", {
+                    headers: {
+                        authorization: `Bearer ${this.getters.Token}` // send the access token through the 'Authorization' header
+                    },
+                    params: {
+                        user_id: this.getters.User.id,
+                        building_id: Building.id,
+                    }
+                })
+                .then(res => {
+                    if (res.data == true) {
+                         Vue.toasted.show("Upgrade finishished!", {
+                            theme: "toasted-primary",
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                        
+                        context.dispatch("FetchSettlement", this.getters.User)
+                    }
+                    else {
+                        Vue.toasted.show("upgrade failed!", {
+                            theme: "toasted-primary",
+                            type: "error",
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }
+
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
         }
     }
 }

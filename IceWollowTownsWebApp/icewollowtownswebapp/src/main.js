@@ -11,6 +11,10 @@ import { domain, clientId, audience } from "../auth_config.json";
 
 // Import the plugin here
 import { Auth0Plugin } from "./auth";
+// register the plugin on vue
+import Toasted from 'vue-toasted';
+ 
+Vue.use(Toasted)
 
 Vue.use(Auth0Plugin, {
   domain,

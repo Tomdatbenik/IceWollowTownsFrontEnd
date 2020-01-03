@@ -119,6 +119,12 @@
               <td>{{building.price.populationAmount}}</td>
             </tr>
           </table>
+
+          <button
+            type="button"
+            class="btn btn-primary mt-4"
+            v-on:click="TryUpgradeBuilding(building)"
+          >Upgrade</button>
         </div>
       </div>
     </div>
@@ -129,7 +135,12 @@
 export default {
   name: "Building",
   components: {},
-  props: ["building"]
+  props: ["building"],
+  methods: {
+    TryUpgradeBuilding: function(building) {
+      this.$store.dispatch("TryUpgradeBuilding", building);
+    }
+  }
 };
 </script>
 
