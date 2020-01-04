@@ -123,7 +123,7 @@
           <button
             type="button"
             class="btn btn-primary mt-4"
-            v-on:click="TryUpgradeBuilding(building)"
+            v-on:click="TryUpgradeBuilding(building)" v-if="building.level != 5"
           >Upgrade</button>
         </div>
       </div>
