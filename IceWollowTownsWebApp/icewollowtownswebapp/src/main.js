@@ -5,16 +5,16 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import store from './store/index';
+import VueToasted from 'vue-toasted';
+
+Vue.use(VueToasted);
+
 
 // Import the Auth0 configuration
 import { domain, clientId, audience } from "../auth_config.json";
 
 // Import the plugin here
 import { Auth0Plugin } from "./auth";
-// register the plugin on vue
-import Toasted from 'vue-toasted';
- 
-Vue.use(Toasted)
 
 Vue.use(Auth0Plugin, {
   domain,

@@ -77,7 +77,7 @@ export default {
                             })
                             .then(res => {
                                 context.commit("SET_SETTLEMENT", res.data)
-
+                                context.commit("SET_RESOURCES",res.data.stockpile);
                                 axios
                                     .get(this.getters.SettlementBaseUrl + "/api/getconstruction", {
                                         headers: {
@@ -107,6 +107,7 @@ export default {
                     }
                     else {
                         context.commit("SET_SETTLEMENT", response.data)
+                        context.commit("SET_RESOURCES",response.data.stockpile);
                         axios
                             .get(this.getters.SettlementBaseUrl + "/api/getconstruction", {
                                 headers: {

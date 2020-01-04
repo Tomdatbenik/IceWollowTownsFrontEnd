@@ -1,44 +1,33 @@
-import Vue from 'vue'
-
 export default {
     state: {
-        stockpile: "ws://localhost:8083/ws/stockpile",
-
-        stockpileSocket: {
-            isConnected: false,
-            message: '',
-            reconnectError: false,
-          }
+        stockpileWS: 'ws://localhost:8083/ws/stockpile',
+        socket: {}
     },
     mutations: {
-       GET_CONNECTION_WITH_STOCKPILE(state)
-       {
-            Vue.prototype.$socket = event.currentTarget
-            state.stockpileSocket.isConnected = true
-       },
-       SOCKET_ONMESSAGE (state, message)  {
-        state.socket.message = message;
-        state.resources = message;
-      },
+        SET_STOCKPILE_SOCKET(state, socket)
+        {
+            state.socket = socket;
+        }
     },
-    getters: {
-        stockpileWebsocket: state =>
+    getters:
+    {
+        getstockpileWS: state =>
         {
-            return state.stockpile;
+            return state.stockpileWS
         },
-        getMessage: state=>
+        getstockpileSocket: state=>
         {
-            return state.message;
+            return state.socket
         }
     },
     actions: {
-        ConnectWithStockpileWebsocket(context)
+        setSocket(context, socket)
         {
-            context.commit('GET_CONNECTION_WITH_STOCKPILE');
+            context.commit("SET_STOCKPILE_SOCKET",socket);
         },
-        stockpileOnMessage(context,message)
+        SendMessageToStockpileWebsocket(context,message)
         {
-            context.commit('SOCKET_ONMESSAGE', message);
+            this.getters.getstockpileSocket.send(JSON.stringify(message));
         }
     }
 }

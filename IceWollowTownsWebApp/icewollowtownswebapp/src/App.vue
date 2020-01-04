@@ -5,6 +5,7 @@
         <Navigation />
         <router-view />
         <!-- <Friendlist /> -->
+        <StockpileWebsocket />
       </div>
       <div v-else class="container-fluid">
         <Loading msg="Loading settlement" />
@@ -63,12 +64,14 @@ body {
 <script>
 import Loading from "./components/Loading";
 import Navigation from "./components/Navigation";
+import StockpileWebsocket from "./components/stockpileWebsocket";
 // import Friendlist from "./components/FriendList";
 
 export default {
   components: {
     Loading,
-    Navigation
+    Navigation,
+    StockpileWebsocket
     // Friendlist
   }
 };

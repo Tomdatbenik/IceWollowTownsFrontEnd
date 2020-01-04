@@ -3,10 +3,10 @@ export default {
         resources: {
             Autonomy: 0,
             Gold: 0,
+            Food: 0,
             Wood: 0,
             Stone: 0,
             Iron: 0,
-            Food: 0,
             Population: 0,
             Adventurers: 0
         },
@@ -15,6 +15,17 @@ export default {
     mutations: {
         SET_RESOURCE_LOADING_STATUS(state, status) {
             state.resourceLoadingStatus = status;
+        },
+        SET_RESOURCES(state, stockpile)
+        {
+            state.resources.Autonomy = stockpile.autonomy.amount;
+            state.resources.Gold = stockpile.gold.amount;
+            state.resources.Wood = stockpile.wood.amount;
+            state.resources.Stone = stockpile.stone.amount;
+            state.resources.Iron = stockpile.iron.amount;
+            state.resources.Food = stockpile.food.amount;
+            state.resources.Population = stockpile.population.amount;
+            state.resources.Adventurers = stockpile.adventurer.amount;
         },
         SET_AUTONOMY(state, Autonomy) {
             state.resources.Autonomy = Autonomy;
@@ -42,15 +53,43 @@ export default {
         },
     },
     getters: {
-
+        Autonomy: state=>
+        {
+            return state.resources.Autonomy;
+        },
+        Gold: state=>
+        {
+            return state.resources.Gold;
+        },
+        Food: state=>
+        {
+            return state.resources.Food;
+        },
+        Wood: state=>
+        {
+            return state.resources.Wood;
+        },
+        Stone: state=>
+        {
+            return state.resources.Stone;
+        },
+        Iron: state=>
+        {
+            return state.resources.Iron;
+        },
+        Population: state=>
+        {
+            return state.resources.Population;
+        },
+        Adventurer: state=>
+        {
+            return state.resources.Adventurers;
+        },
     },
     actions: {
-        FetchResources(context) {
-            context.commit('SET_RESOURCE_LOADING_STATUS', true)
-        },
-        SetWood(context, wood)
+        setResources(context,stockpile)
         {
-            context.commit('SET_WOOD', wood)
+            context.commit("SET_RESOURCES", stockpile)
         }
     }
 }
