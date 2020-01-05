@@ -16,7 +16,7 @@
             </tr>
             <tr v-if="building.resource != null && building.income != 0">
               <td>Income:</td>
-              <td>{{building.income}} {{building.resource.name}}</td>
+              <td>{{building.income}} {{building.resource.name}} /10 sec</td>
             </tr>
             <tr v-if="building.maxPopulation != null">
               <td>Population:</td>
