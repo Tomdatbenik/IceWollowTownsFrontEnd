@@ -67,14 +67,14 @@ export default {
       return this.$store.getters.Autonomy > this.$store.getters.lastAutonomy;
     },
     delay() {
-      var timer = setInterval(() => {
-        console.log("test");
-        myStopFunction();
-      }, 400);
+      // var timer = setInterval(() => {
+      //   console.log("test");
+      //   myStopFunction();
+      // }, 400);
 
-      function myStopFunction() {
-        clearInterval(timer);
-      }
+      // function myStopFunction() {
+      //   clearInterval(timer);
+      // }
     }
   }
 };
