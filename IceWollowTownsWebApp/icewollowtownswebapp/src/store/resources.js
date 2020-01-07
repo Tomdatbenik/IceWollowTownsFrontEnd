@@ -36,8 +36,6 @@ export default {
             state.lastResources.Population = this.getters.Population;
             state.lastResources.Adventurers = this.getters.Adventurers;
 
-            console.log(this.getters.Gold)
-            console.log(stockpile.gold.amount)
             state.resources.Autonomy = stockpile.autonomy.amount;
             state.resources.Gold = stockpile.gold.amount;
             state.resources.Wood = stockpile.wood.amount;

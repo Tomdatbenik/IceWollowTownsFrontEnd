@@ -9,7 +9,7 @@
         >Autonomy: {{this.$store.getters.Autonomy}}%</li>
         <li
           class="list-group-item bg-dark border-0"
-          v-bind:class="{ 'positive': lastGold ,'negative': !lastGold  }"
+          v-bind:class="{ 'positive': lastGold == 1 ,'negative': lastGold == -1, 'text-light': lastGold==0  }"
         >Gold: {{this.$store.getters.Gold}}</li>
         <li
           class="list-group-item bg-dark border-0"
@@ -46,7 +46,6 @@ export default {
   components: {},
   computed: {
     lastGold: function() {
-      console.log(this.$store.getters.Gold);
       let lastGold = 0;
       console.log(this.$store.getters.Gold);
       console.log(this.$store.getters.lastGold);
@@ -67,14 +66,14 @@ export default {
       return this.$store.getters.Autonomy > this.$store.getters.lastAutonomy;
     },
     delay() {
-      // var timer = setInterval(() => {
-      //   console.log("test");
-      //   myStopFunction();
-      // }, 400);
+      var timer = setInterval(() => {
+        console.log("test");
+        myStopFunction();
+      }, 400);
 
-      // function myStopFunction() {
-      //   clearInterval(timer);
-      // }
+      function myStopFunction() {
+        clearInterval(timer);
+      }
     }
   }
 };
