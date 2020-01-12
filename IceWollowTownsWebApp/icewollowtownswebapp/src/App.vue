@@ -2,10 +2,10 @@
   <div class="h-100">
     <div class="container-fluid bg-dark fill" v-if="!$store.getters.Loading">
       <div v-if="!$store.getters.SettlementLoading">
+        <StockpileWebsocket />
         <Navigation />
         <router-view />
         <!-- <Friendlist /> -->
-        <StockpileWebsocket />
       </div>
       <div v-else class="container-fluid">
         <Loading msg="Loading settlement" />

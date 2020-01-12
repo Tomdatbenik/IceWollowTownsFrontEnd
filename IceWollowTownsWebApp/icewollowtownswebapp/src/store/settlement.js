@@ -25,10 +25,24 @@ export default {
             townHall: {},
         },
         settlementLoading: false,
+        spectateSettlement: {
+            id: 0,
+            goldmines: [],
+            houses: [],
+            ironmine: [],
+            lumberjacks: [],
+            smiths: [],
+            stonemines: [],
+            stockpile: {},
+            townHall: {},
+        },
     },
     mutations: {
         SET_SETTLEMENT(state, settlement) {
             state.settlement = settlement;
+        },
+        SET_SPECATE_SETTLEMENT(state, settlement) {
+            state.spectateSettlement = settlement;
         },
         SET_SETTLEMENT_LOADING(state, loading) {
             state.settlementLoading = loading;
@@ -46,6 +60,10 @@ export default {
         },
         getConstruction: state => {
             return state.construction;
+        },
+        getSpectateSettlement: state=>
+        {
+            return state.spectateSettlement;
         }
     },
     actions: {
@@ -77,7 +95,7 @@ export default {
                             })
                             .then(res => {
                                 context.commit("SET_SETTLEMENT", res.data)
-                                context.commit("SET_RESOURCES",res.data.stockpile);
+                                context.commit("SET_RESOURCES", res.data.stockpile);
                                 axios
                                     .get(this.getters.SettlementBaseUrl + "/api/getconstruction", {
                                         headers: {
@@ -107,7 +125,7 @@ export default {
                     }
                     else {
                         context.commit("SET_SETTLEMENT", response.data)
-                        context.commit("SET_RESOURCES",response.data.stockpile);
+                        context.commit("SET_RESOURCES", response.data.stockpile);
                         axios
                             .get(this.getters.SettlementBaseUrl + "/api/getconstruction", {
                                 headers: {
@@ -148,12 +166,12 @@ export default {
                 })
                 .then(res => {
                     if (res.data == true) {
-                         Vue.toasted.show("Building finishished!", {
+                        Vue.toasted.show("Building finishished!", {
                             theme: "toasted-primary",
                             position: "bottom-right",
                             duration: 5000
                         });
-                        
+
                         context.dispatch("FetchSettlement", this.getters.User)
                     }
                     else {
@@ -184,12 +202,12 @@ export default {
                 })
                 .then(res => {
                     if (res.data == true) {
-                         Vue.toasted.show("Upgrade finishished!", {
+                        Vue.toasted.show("Upgrade finishished!", {
                             theme: "toasted-primary",
                             position: "bottom-right",
                             duration: 5000
                         });
-                        
+
                         context.dispatch("FetchSettlement", this.getters.User)
                     }
                     else {
@@ -206,6 +224,23 @@ export default {
                     // handle error
                     console.log(error);
                 })
+        },
+        GetSettlementById: async function (context, id) {
+            context.commit("SET_SPECTATELOADING", true)
+            await axios
+                .get(this.getters.SettlementBaseUrl + "/api/getsettlement", {
+                    headers: {
+                        authorization: `Bearer ${this.getters.Token}` // send the access token through the 'Authorization' header
+                    },
+                    params: {
+                        user_id: id
+                    }
+                })
+                .then(response => {
+                    context.commit("SET_SPECATE_SETTLEMENT",response.data);
+                    context.commit("SET_SPECTATELOADING", false)
+                })
         }
+
     }
 }

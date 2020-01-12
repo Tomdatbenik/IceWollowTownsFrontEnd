@@ -10,7 +10,6 @@ import VueNativeSock from "vue-native-websocket";
 import store from "../store/index.js";
 
 import Vue from "vue";
-console.log(store.getters.getstockpileWS);
 Vue.use(VueNativeSock, store.getters.getstockpileWS, {
   reconnection: true, // (Boolean) whether to reconnect automatically (false)
   reconnectionAttempts: 20, // (Number) number of reconnection attempts before giving up (Infinity),
@@ -30,7 +29,7 @@ export default {
   },
   mounted: function() {
     this.$store.dispatch("setSocket", this.$socket);
-    console.log(this.$socket);
+
     this.$options.sockets.onmessage = data => this.messageReceived(data);
   },
   methods: {
@@ -39,7 +38,7 @@ export default {
     },
     messageReceived: function(data) {
       this.Message = JSON.parse(data.data);
-      console.log(this.Message);
+
       switch (this.Message.type) {
         case "CONNECT":
           this.Message.type = "CONNECT";
@@ -49,6 +48,12 @@ export default {
           break;
         case "STOCKPILE":
           this.$store.dispatch("setResources", JSON.parse(this.Message.body));
+          break;
+        case "SPECTATE":
+          this.$store.dispatch(
+            "setSpectateResources",
+            JSON.parse(this.Message.body)
+          );
           break;
       }
     }

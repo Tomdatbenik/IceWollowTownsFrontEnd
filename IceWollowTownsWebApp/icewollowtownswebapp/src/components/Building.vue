@@ -14,9 +14,13 @@
               <td>Description:</td>
               <td>{{building.description}}</td>
             </tr>
-            <tr v-if="building.resource != null && building.income != 0">
+            <tr v-if="building.resource != null && building.income != 0 && building.resource.name != 'Population'">
               <td>Income:</td>
               <td>{{building.income}} {{building.resource.name}} /10 sec</td>
+            </tr>
+            <tr v-else-if="building.resource != null && building.income != 0">
+              <td>Income:</td>
+              <td>{{building.income}} {{building.resource.name}} /10 sec /50%</td>
             </tr>
             <tr v-if="building.maxPopulation != null">
               <td>Population:</td>

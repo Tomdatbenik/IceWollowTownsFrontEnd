@@ -4,7 +4,7 @@
       <div class="card bg-dark rounded border border-light text-light mb-5 mt-2">
         <div class="card-header">
           <div class="card-title">
-            <h4 class="display-4">Settlement</h4>
+            <h4 class="display-4">Spectating Settlement</h4>
           </div>
         </div>
         <div class="card-body">
@@ -30,26 +30,26 @@
                 </div>
                 <div class="card-body">
                   <p>Chance of getting population: 50%</p>
-                  <p>Population per 10/s : {{PopulationPerTime}}</p>
+                  <p>Max population per 10/s : {{MaxPopulationPerTime}}</p>
                   <p>Max population: {{MaxPopualation}}</p>
-                  <p>Adventurers: {{this.$store.getters.Adventurer}}</p>
+                  <p>Adventurers: {{this.$store.getters.SpectateAdventurer}}</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-6">
-              <div class="bg-dark rounded border border-light text-light mb-4">
+              <div class="bg-dark rounded border border-light text-light mb-4" v-if="this.$store.getters.getSpectateSettlement.goldmines != ''">
                 <div class="card-header">
                   <h4>Buildings</h4>
                 </div>
                 <div class="card-body">
-                  <p>Goldmines: {{this.$store.getters.getSettlement.goldmines.length}}</p>
-                  <p>Farms: {{this.$store.getters.getSettlement.farms.length}}</p>
-                  <p>Lumberjacks: {{this.$store.getters.getSettlement.lumberjacks.length}}</p>
-                  <p>stonemines: {{this.$store.getters.getSettlement.stonemines.length}}</p>
-                  <p>Ironmines: {{this.$store.getters.getSettlement.ironmines.length}}</p>
-                  <p>Smiths: {{this.$store.getters.getSettlement.smiths.length}}</p>
+                  <p>Goldmines: {{this.$store.getters.getSpectateSettlement.goldmines.length}}</p>
+                  <p>Farms: {{this.$store.getters.getSpectateSettlement.farms.length}}</p>
+                  <p>Lumberjacks: {{this.$store.getters.getSpectateSettlement.lumberjacks.length}}</p>
+                  <p>stonemines: {{this.$store.getters.getSpectateSettlement.stonemines.length}}</p>
+                  <p>Ironmines: {{this.$store.getters.getSpectateSettlement.ironmines.length}}</p>
+                  <p>Smiths: {{this.$store.getters.getSpectateSettlement.smiths.length}}</p>
                 </div>
               </div>
             </div>
@@ -59,12 +59,12 @@
                   <h4>Resources</h4>
                 </div>
                 <div class="card-body">
-                  <p>Gold: {{this.$store.getters.Gold}}/ {{this.$store.getters.getSettlement.stockpile.maxGold}}</p>
-                  <p>Food: {{this.$store.getters.Food}}/ {{this.$store.getters.getSettlement.stockpile.maxFood}}</p>
-                  <p>Wood: {{this.$store.getters.Wood}}/ {{this.$store.getters.getSettlement.stockpile.maxWood}}</p>
-                  <p>Stone: {{this.$store.getters.Stone}}/ {{this.$store.getters.getSettlement.stockpile.maxStone}}</p>
+                  <p>Gold: {{this.$store.getters.SpectateGold}}/ {{this.$store.getters.getSpectateSettlement.stockpile.maxGold}}</p>
+                  <p>Food: {{this.$store.getters.SpectateFood}}/ {{this.$store.getters.getSpectateSettlement.stockpile.maxFood}}</p>
+                  <p>Wood: {{this.$store.getters.SpectateWood}}/ {{this.$store.getters.getSpectateSettlement.stockpile.maxWood}}</p>
+                  <p>Stone: {{this.$store.getters.SpectateStone}}/ {{this.$store.getters.getSpectateSettlement.stockpile.maxStone}}</p>
                   <p></p>
-                  <p>Iron: {{this.$store.getters.Iron}}/ {{this.$store.getters.getSettlement.stockpile.maxIron}}</p>
+                  <p>Iron: {{this.$store.getters.SpectateIron}}/ {{this.$store.getters.getSpectateSettlement.stockpile.maxIron}}</p>
                 </div>
               </div>
             </div>
@@ -85,67 +85,84 @@ export default {
       WoodIncome: 0,
       StoneIncome: 0,
       IronIncome: 0,
-      PopulationPerTime: 0,
+      MaxPopulationPerTime: 0,
       MaxPopualation: 0
     };
   },
   name: "Settlement",
   components: {},
-  mounted: function() {
+  destroyed: function() {
+    const message = {
+      body: 37,
+      type: "STOPSPECTATE"
+    };
+
+    this.SendMessage(message);
+  },
+  mounted: async function() {
+    this.$store.dispatch("setSpectateUserId", 37);
+    await this.$store.dispatch("GetSettlementById", 37);
+
+    const message = {
+      body: 37,
+      type: "SPECTATE"
+    };
+
+    this.SendMessage(message);
+
     this.GetGoldIncome();
     this.GetWoodIncome();
     this.GetFoodIncome();
     this.GetStoneIncome();
     this.GetIronIncome();
-    this.GetPopulationPerTime();
-    this.GetMaxPopulation();
+    this.GetMaxPopulationPerTime();
+
+    this.$store.dispatch("setSpectateUserId", 37);
+    this.$store.dispatch("GetSettlementById", 37);
   },
   methods: {
+    SendMessage: function(message) {
+      this.$store.dispatch("SendMessageToStockpileWebsocket", message);
+    },
     GetGoldIncome: function() {
-      const goldmines = this.$store.getters.getSettlement.goldmines;
+      const goldmines = this.$store.getters.getSpectateSettlement.goldmines;
       for (let key in goldmines) {
         this.GoldIncome += goldmines[key].income;
       }
     },
     GetFoodIncome: function() {
-      const farms = this.$store.getters.getSettlement.farms;
+      const farms = this.$store.getters.getSpectateSettlement.farms;
       for (let key in farms) {
         this.FoodIncome += farms[key].income;
       }
     },
     GetWoodIncome: function() {
-      const lumberjacks = this.$store.getters.getSettlement.lumberjacks;
+      const lumberjacks = this.$store.getters.getSpectateSettlement.lumberjacks;
       for (let key in lumberjacks) {
         this.WoodIncome += lumberjacks[key].income;
       }
     },
     GetStoneIncome: function() {
-      const stonemines = this.$store.getters.getSettlement.stonemines;
+      const stonemines = this.$store.getters.getSpectateSettlement.stonemines;
       for (let key in stonemines) {
         this.StoneIncome += stonemines[key].income;
       }
     },
     GetIronIncome: function() {
-      const Ironmines = this.$store.getters.getSettlement.Ironmines;
+      const Ironmines = this.$store.getters.getSpectateSettlement.Ironmines;
       for (let key in Ironmines) {
         this.IronIncome += Ironmines[key].income;
       }
 
-      const Smiths = this.$store.getters.getSettlement.smiths;
+      const Smiths = this.$store.getters.getSpectateSettlement.smiths;
       for (let key in Smiths) {
         this.IronIncome += Smiths[key].income;
       }
     },
-    GetMaxPopulation: function() {
-      const Houses = this.$store.getters.getSettlement.houses;
+    GetMaxPopulationPerTime: function() {
+      const Houses = this.$store.getters.getSpectateSettlement.houses;
       for (let key in Houses) {
-        this.MaxPopualation += Houses[key].maxPopulation;
-      }
-    },
-    GetPopulationPerTime: function() {
-      const Houses = this.$store.getters.getSettlement.houses;
-      for (let key in Houses) {
-        this.PopulationPerTime += Houses[key].income;
+        this.MaxPopulationPerTime += Houses[key].income;
       }
     }
   }

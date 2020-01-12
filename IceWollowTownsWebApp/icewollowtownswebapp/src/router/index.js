@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
 import Settlement from '../views/Settlement.vue'
 import Buildings from '../views/Buildings.vue'
+import Spectate from '../views/Spectating.vue'
 import { authGuard } from "../auth/authGuard";
 
 Vue.use(VueRouter)
@@ -31,6 +32,12 @@ const routes = [
     path: '/home',
     name: 'home',
     component: Home,
+    beforeEnter: authGuard
+  },
+  {
+    path: '/spectate',
+    name: 'Spectate',
+    component: Spectate,
     beforeEnter: authGuard
   },
   {

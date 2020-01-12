@@ -7,6 +7,10 @@ export default {
         SET_STOCKPILE_SOCKET(state, socket)
         {
             state.socket = socket;
+        },
+        SEND_STOCKPILE_MESSAGE(state, message)
+        {
+            state.socket.send(JSON.stringify(message));
         }
     },
     getters:
@@ -27,7 +31,7 @@ export default {
         },
         SendMessageToStockpileWebsocket(context,message)
         {
-            this.getters.getstockpileSocket.send(JSON.stringify(message));
+            context.commit("SEND_STOCKPILE_MESSAGE",message)
         }
     }
 }

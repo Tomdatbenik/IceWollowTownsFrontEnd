@@ -6,35 +6,32 @@
         <li
           class="list-group-item bg-dark border-0"
           v-bind:class="{ 'positive': lastGold == 1 ,'negative': lastGold == -1, 'text-light': lastGold==0  }"
-        >Autonomy: {{this.$store.getters.Autonomy}}%</li>
-        <li
-          class="list-group-item bg-dark border-0"
-          v-bind:class="{ 'positive': lastGold == 1 ,'negative': lastGold == -1, 'text-light': lastGold==0  }"
         >Gold: {{this.$store.getters.Gold}}</li>
         <li
           class="list-group-item bg-dark border-0"
-          v-bind:class="{ 'positive': lastGold ,'negative': !lastGold  }"
-        >Wood: {{this.$store.getters.Wood}}</li>
-        <li
-          class="list-group-item bg-dark border-0"
-          v-bind:class="{ 'positive': lastGold ,'negative': !lastGold  }"
-        >Stone: {{this.$store.getters.Stone}}</li>
-        <li
-          class="list-group-item bg-dark border-0"
-          v-bind:class="{ 'positive': lastGold ,'negative': !lastGold  }"
-        >Iron: {{this.$store.getters.Iron}}</li>
-        <li
-          class="list-group-item bg-dark border-0"
-          v-bind:class="{ 'positive': lastGold ,'negative': !lastGold  }"
+          v-bind:class="{ 'positive': lastFood == 1 ,'negative': lastFood == -1, 'text-light': lastFood==0  }"
         >Food: {{this.$store.getters.Food}}</li>
         <li
           class="list-group-item bg-dark border-0"
-          v-bind:class="{ 'positive': lastGold ,'negative': !lastGold  }"
-        >Population: {{this.$store.getters.Population}}</li>
+          v-bind:class="{ 'positive': lastWood == 1 ,'negative': lastWood == -1, 'text-light': lastWood==0  }"
+        >Wood: {{this.$store.getters.Wood}}</li>
         <li
           class="list-group-item bg-dark border-0"
-          v-bind:class="{ 'positive': lastGold ,'negative': !lastGold  }"
+          v-bind:class="{ 'positive': lastStone == 1 ,'negative': lastStone == -1, 'text-light': lastStone==0  }"
+        >Stone: {{this.$store.getters.Stone}}</li>
+        <li
+          class="list-group-item bg-dark border-0"
+          v-bind:class="{ 'positive': lastIron == 1 ,'negative': lastIron == -1, 'text-light': lastIron==0  }"
+        >Iron: {{this.$store.getters.Iron}}</li>
+        <li
+          class="list-group-item bg-dark border-0 text-light"
+        >Population: {{this.$store.getters.Population}}</li>
+        <li
+          class="list-group-item bg-dark border-0 text-light"
         >Adventurers: {{this.$store.getters.Adventurer}}</li>
+        <li
+          class="list-group-item bg-dark border-0 text-light"
+        >Autonomy: {{this.$store.getters.Autonomy}}%</li>
       </ul>
     </div>
   </div>
@@ -47,8 +44,7 @@ export default {
   computed: {
     lastGold: function() {
       let lastGold = 0;
-      console.log(this.$store.getters.Gold);
-      console.log(this.$store.getters.lastGold);
+
       if (this.$store.getters.Gold > this.$store.getters.lastGold) {
         lastGold = 1;
       } else if (this.$store.getters.Gold < this.$store.getters.lastGold) {
@@ -56,24 +52,60 @@ export default {
       } else {
         lastGold = 0;
       }
-      this.delay();
 
       return lastGold;
-    }
-  },
-  methods: {
-    lastAutonomy: function() {
-      return this.$store.getters.Autonomy > this.$store.getters.lastAutonomy;
     },
-    delay() {
-      var timer = setInterval(() => {
-        console.log("test");
-        myStopFunction();
-      }, 400);
+    lastFood: function() {
+      let lastFood = 0;
 
-      function myStopFunction() {
-        clearInterval(timer);
+      if (this.$store.getters.Gold > this.$store.getters.lastFood) {
+        lastFood = 1;
+      } else if (this.$store.getters.Gold < this.$store.getters.lastFood) {
+        lastFood = -1;
+      } else {
+        lastFood = 0;
       }
+
+      return lastFood;
+    },
+    lastWood: function() {
+      let lastWood = 0;
+
+      if (this.$store.getters.Gold > this.$store.getters.lastWood) {
+        lastWood = 1;
+      } else if (this.$store.getters.Gold < this.$store.getters.lastWood) {
+        lastWood = -1;
+      } else {
+        lastWood = 0;
+      }
+
+      return lastWood;
+    },
+    lastStone: function() {
+      let lastStone = 0;
+
+      if (this.$store.getters.Gold > this.$store.getters.lastStone) {
+        lastStone = 1;
+      } else if (this.$store.getters.Gold < this.$store.getters.lastStone) {
+        lastStone = -1;
+      } else {
+        lastStone = 0;
+      }
+
+      return lastStone;
+    },
+    lastIron: function() {
+      let lastIron = 0;
+
+      if (this.$store.getters.Gold > this.$store.getters.lastIron) {
+        lastIron = 1;
+      } else if (this.$store.getters.Gold < this.$store.getters.lastIron) {
+        lastIron = -1;
+      } else {
+        lastIron = 0;
+      }
+
+      return lastIron;
     }
   }
 };
