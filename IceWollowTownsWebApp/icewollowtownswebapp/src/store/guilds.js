@@ -106,7 +106,7 @@ export default {
             await axios
             .request({
                 url: "/api/startexpedition",
-                method: "get" ,
+                method: "post" ,
                 baseURL: this.getters.AdventurersGuildBaseUrl,
                 headers: {
                     authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
