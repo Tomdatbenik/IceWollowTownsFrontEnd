@@ -6,14 +6,13 @@ export default {
         stockpilesocket: {}
     },
     mutations: {
-        SET_STOCKPILE_SOCKET(state, stockpilesocket)
+        SET_STOCKPILE_SOCKET(state, socket)
         {
             state.socket = socket;
         },
         SEND_STOCKPILE_MESSAGE(state, message)
         {
             state.socket.send(JSON.stringify(message));
-            state.stockpilesocket = stockpilesocket;
         },
         SET_SOCIALHUB_SOCKET(state, socialhubsocket)
         {
