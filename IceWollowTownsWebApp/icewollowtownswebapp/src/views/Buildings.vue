@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <div class="card bg-dark rounded border border-light text-light mb-5">
+      <div class="card bg-dark rounded border border-light text-light mb-5 mt-2">
         <div class="card-header">
           <div class="card-title">
             <h4 class="display-4">Buildings</h4>

@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-6 offset-3">
-      <div class="card bg-dark rounded border border-light text-light">
+      <div class="card bg-dark rounded border border-light text-light mt-2">
         <div class="card-header border border-light">
           <div class="card-title">
             <h4 class="display-4">Profile</h4>

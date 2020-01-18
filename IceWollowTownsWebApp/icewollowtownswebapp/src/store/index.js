@@ -8,6 +8,7 @@ import Resources from '../store/resources'
 import Guilds from '../store/guilds'
 import Api from '../store/api'
 import Websockets from '../store/websockets'
+import Spectate from '../store/spectate'
 
 Vue.use(Vuex);
 
@@ -17,7 +18,8 @@ export default new Vuex.Store({
     resources: Resources,
     api: Api,
     guilds: Guilds,
-    websockets: Websockets
+    websockets: Websockets,
+    spectate: Spectate
   },
   state: {
     user: {
