@@ -126,7 +126,9 @@ export default {
   },
   methods: {
     async StartExpedition(expedition) {
-      this.$store.dispatch("StartExpedition", expedition);
+      await this.$store.dispatch("StartExpedition", expedition);
+      await this.GenerateExpedition();
+      this.GetActiveExpeditions();
     },
     async GetActiveExpeditions() {
       this.activeexpeditions = await this.$store.dispatch(
@@ -141,6 +143,7 @@ export default {
     },
     async RewardPlayer(expedition) {
       await this.$store.dispatch("RewardPlayer", expedition);
+      this.GetActiveExpeditions();
     },
         async TrainAdventurers(amount) {
       await this.$store.dispatch("TrainAdventurers", amount);
