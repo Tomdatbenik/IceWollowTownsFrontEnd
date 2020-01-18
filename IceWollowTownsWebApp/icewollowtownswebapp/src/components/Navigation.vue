@@ -27,6 +27,9 @@
           <li class="nav-item">
             <router-link class="nav-link text-light" to="/adventurersguild">Adventurer guild</router-link>
           </li>
+                    <li class="nav-item">
+            <router-link class="nav-link text-light" to="/socialhub">Socialhub</router-link>
+          </li>
           <li class="nav-item">
             <router-link class="nav-link text-light" to="/home">Passives</router-link>
           </li>
