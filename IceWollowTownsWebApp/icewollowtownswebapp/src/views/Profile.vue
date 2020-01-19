@@ -28,7 +28,25 @@
               </div>
             </div>
             <div class="col">
-                <img class="mr-2 rounded img-thumpnail" width="200" height="200" :src="$auth.user.picture" />
+              <img
+                class="mr-2 rounded img-thumpnail"
+                width="200"
+                height="200"
+                :src="$auth.user.picture"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col" v-if="!deleteCheck">
+                  <button class="btn btn-outline-danger" v-on:click="AreYouSure">Reset settlement</button>
+                </div>
+                <div class="col" v-else>
+                  <p>If you are sure you want to reset your settlement, press the button below.</p>
+                  <button class="btn btn-outline-danger" v-on:click="DeleteSettlment">I am sure</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -44,12 +62,19 @@ import axios from "axios";
 export default {
   data() {
     return {
-      token: null
+      token: null,
+      deleteCheck: false
     };
   },
   name: "profile",
   components: {},
   methods: {
+    AreYouSure: function() {
+      this.deleteCheck = true;
+    },
+    DeleteSettlment: function() {
+      this.$store.dispatch("DeleteSettlement");
+    },
     async GetToken() {
       const token = await this.$auth.getTokenSilently();
       this.token = token;

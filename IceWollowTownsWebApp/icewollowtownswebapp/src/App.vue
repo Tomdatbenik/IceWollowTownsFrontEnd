@@ -1,15 +1,15 @@
 <template>
   <div class="h-100">
     <div class="container-fluid bg-dark fill" v-if="!$store.getters.Loading">
+      <StockpileWebsocket />
+      <Navigation />
       <div v-if="!$store.getters.SettlementLoading">
-        <StockpileWebsocket />
-        <Navigation />
         <router-view />
-        <!-- <Friendlist /> -->
       </div>
-      <div v-else class="container-fluid">
+      <div v-else>
         <Loading msg="Loading settlement" />
       </div>
+      <!-- <Friendlist /> -->
     </div>
     <div v-if="$store.getters.Loading" class="container-fluid">
       <Loading msg="Authenticating" />

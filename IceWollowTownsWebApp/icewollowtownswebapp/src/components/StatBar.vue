@@ -58,9 +58,9 @@ export default {
     lastFood: function() {
       let lastFood = 0;
 
-      if (this.$store.getters.Gold > this.$store.getters.lastFood) {
+      if (this.$store.getters.Food > this.$store.getters.lastFood) {
         lastFood = 1;
-      } else if (this.$store.getters.Gold < this.$store.getters.lastFood) {
+      } else if (this.$store.getters.Food < this.$store.getters.lastFood) {
         lastFood = -1;
       } else {
         lastFood = 0;
@@ -71,9 +71,9 @@ export default {
     lastWood: function() {
       let lastWood = 0;
 
-      if (this.$store.getters.Gold > this.$store.getters.lastWood) {
+      if (this.$store.getters.Wood > this.$store.getters.lastWood) {
         lastWood = 1;
-      } else if (this.$store.getters.Gold < this.$store.getters.lastWood) {
+      } else if (this.$store.getters.Wood < this.$store.getters.lastWood) {
         lastWood = -1;
       } else {
         lastWood = 0;
@@ -84,9 +84,9 @@ export default {
     lastStone: function() {
       let lastStone = 0;
 
-      if (this.$store.getters.Gold > this.$store.getters.lastStone) {
+      if (this.$store.getters.Stone > this.$store.getters.lastStone) {
         lastStone = 1;
-      } else if (this.$store.getters.Gold < this.$store.getters.lastStone) {
+      } else if (this.$store.getters.Stone < this.$store.getters.lastStone) {
         lastStone = -1;
       } else {
         lastStone = 0;
@@ -97,9 +97,9 @@ export default {
     lastIron: function() {
       let lastIron = 0;
 
-      if (this.$store.getters.Gold > this.$store.getters.lastIron) {
+      if (this.$store.getters.Iron > this.$store.getters.lastIron) {
         lastIron = 1;
-      } else if (this.$store.getters.Gold < this.$store.getters.lastIron) {
+      } else if (this.$store.getters.Iron < this.$store.getters.lastIron) {
         lastIron = -1;
       } else {
         lastIron = 0;
@@ -126,7 +126,7 @@ export default {
   -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
   animation-name: positiveToWhite;
   animation-duration: 1s;
-  color: white;
+  color: lightgreen;
 }
 
 /* Safari 4.0 - 8.0 */
@@ -135,7 +135,7 @@ export default {
     color: green;
   }
   to {
-    color: white;
+    color: lightgreen;
   }
 }
 
@@ -145,7 +145,7 @@ export default {
     color: green;
   }
   to {
-    color: white;
+    color: lightgreen;
   }
 }
 

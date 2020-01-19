@@ -245,6 +245,25 @@ export default {
                     context.commit("SET_SPECATE_SETTLEMENT", response.data);
                     context.commit("SET_SPECTATELOADING", false)
                 })
+        },
+        DeleteSettlement()
+        {
+            axios.request({
+                method: 'DELETE',
+                url: this.getters.SettlementBaseUrl + "/api/deletesettlement",
+                headers: {
+                    authorization: `Bearer ${this.getters.Token}`,
+                    "Content-Type": "application/json"
+                },
+                params: {
+                    user_id: this.getters.User.id,
+                }
+            }).then(response=>{
+                if(response.data)
+                {
+                   this.dispatch("FetchSettlement",this.getters.User)
+                }
+            })
         }
 
     }
