@@ -40,8 +40,8 @@
           <div class="col-3">
             <button v-on:click="GetChat(item.id, item.username, item.chatid)">Chat</button>
           </div>
-                    <div class="col-3">
-            <button v-on:click="RemoveFriend(item.id)">Remove</button>
+          <div class="col-3">
+            <button v-on:click="RemoveFriend(item.id, item.chatid)">Remove</button>
           </div>
         </div>
       </div>
@@ -51,8 +51,11 @@
           <div class="col-6">
             <h6>{{ item.username }}</h6>
           </div>
-          <div class="col-6" v-if="item.receipiant">
+          <div class="col-3" v-if="item.receipiant">
             <button v-on:click="AcceptFriend(item.id)">Accept</button>
+          </div>
+          <div class="col-3">
+            <button v-on:click="RemoveFriend(item.id, item.chatid)">Remove</button>
           </div>
         </div>
       </div>
@@ -99,12 +102,12 @@ export default {
     },
 
     SendChatMessage: function() {
-        console.log("Last tests")
-        this.Message.body = this.chatmessage;
-        this.Message.type = "SENDMESSAGE";
-        this.Message.friendid = this.$store.getters.ChatId;
-        this.Message.chatname = this.$store.getters.ChatName;
-        this.SendMessage(this.Message);
+      console.log("Last tests");
+      this.Message.body = this.chatmessage;
+      this.Message.type = "SENDMESSAGE";
+      this.Message.friendid = this.$store.getters.ChatId;
+      this.Message.chatname = this.$store.getters.ChatName;
+      this.SendMessage(this.Message);
     },
 
     AcceptFriend: function(friendid) {
@@ -113,9 +116,10 @@ export default {
       this.SendMessage(this.Message);
     },
 
-        RemoveFriend: function(friendid) {
+    RemoveFriend: function(friendid, chatid) {
       this.Message.body = friendid;
       this.Message.type = "REMOVEFRIEND";
+      this.Message.chatid = chatid;
       this.SendMessage(this.Message);
     },
 

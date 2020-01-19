@@ -161,7 +161,7 @@ export default {
             await axios
             .request({
                 url: "/api/rewardplayer",
-                method: "get" ,
+                method: "post" ,
                 baseURL: this.getters.AdventurersGuildBaseUrl,
                 headers: {
                     authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
@@ -182,7 +182,7 @@ export default {
             await axios
             .request({
                 url: "/api/trainadventurers",
-                method: "get" ,
+                method: "post" ,
                 baseURL: this.getters.AdventurersGuildBaseUrl,
                 headers: {
                     authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
@@ -203,7 +203,7 @@ export default {
             await axios
             .request({
                 url: "/api/hireadventurers",
-                method: "get" ,
+                method: "post" ,
                 baseURL: this.getters.AdventurersGuildBaseUrl,
                 headers: {
                     authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
