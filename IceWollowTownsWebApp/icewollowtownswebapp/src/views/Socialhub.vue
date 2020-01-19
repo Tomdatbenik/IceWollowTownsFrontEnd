@@ -19,7 +19,7 @@
         </thead>
         <tbody>
           <tr v-for="item in $store.getters.Messages" :key="item">
-            <p>{{ item.sendername }} : {{ item.message }}</p>
+            <p class="text-white">{{ item.sendername }} : {{ item.message }}</p>
           </tr>
         </tbody>
       </table>
