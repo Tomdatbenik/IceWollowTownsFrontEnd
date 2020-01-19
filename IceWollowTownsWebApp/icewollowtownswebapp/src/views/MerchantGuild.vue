@@ -6,6 +6,10 @@
           <div class="card-title">
             <h4 class="display-4">MerchantGuild</h4>
           </div>
+          <div>
+            <button class="btn btn-primary mt-4 mb-4" v-on:click="IncreaseAutonomy()">increase autonomy</button>
+            <p>Cost : {{this.autonomycost}}</p>
+          </div>
           <div class="row">
             <div class="col-3">Food</div>
             <div class="col-3">
@@ -70,20 +74,24 @@ export default {
       stone: null,
       food: null,
       wood: null,
+      autonomycost: this.$store.getters.Autonomy * 20 + 100
     };
   },
   name: "merchantguild",
   components: {},
   mounted: function() {},
   methods: {
-      async BuyResource(amount, type) {
-          var payload = {'amount': amount, 'type': type}
-          this.$store.dispatch('BuyResource', payload);
-      },
-            async SellResource(amount, type) {
-          var payload = {'amount': amount, 'type': type}
-          this.$store.dispatch('SellResource', payload);
-      }
+    async BuyResource(amount, type) {
+      var payload = { amount: amount, type: type };
+      this.$store.dispatch("BuyResource", payload);
+    },
+    async SellResource(amount, type) {
+      var payload = { amount: amount, type: type };
+      this.$store.dispatch("SellResource", payload);
+    },
+    async IncreaseAutonomy() {
+      this.$store.dispatch("IncreaseAutonomy");
+    }
   }
 };
 </script>

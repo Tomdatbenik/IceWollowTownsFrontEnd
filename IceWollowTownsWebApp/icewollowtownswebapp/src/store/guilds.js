@@ -35,6 +35,26 @@ export default {
                     console.log(error);
                 })
         },
+        IncreaseAutonomy() {
+            var token = this.getters.Token
+
+            axios
+                .request({
+                    url: "/api/increaseautonomy",
+                    method: "post" ,
+                    baseURL: this.getters.MerchantGuildBaseUrl,
+                    headers: {
+                        authorization: `Bearer ${token}` // send the access token through the 'Authorization' header
+                    },
+                    params:{
+                        id : this.getters.User.id,
+                    }
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+        },
         SellResource(context, payload) {
             var token = this.getters.Token
 
