@@ -37,8 +37,11 @@
           <div class="col-6">
             <h6>{{ item.username }}</h6>
           </div>
-          <div class="col-6">
+          <div class="col-3">
             <button v-on:click="GetChat(item.id, item.username, item.chatid)">Chat</button>
+          </div>
+                    <div class="col-3">
+            <button v-on:click="RemoveFriend(item.id)">Remove</button>
           </div>
         </div>
       </div>
@@ -107,6 +110,12 @@ export default {
     AcceptFriend: function(friendid) {
       this.Message.body = friendid;
       this.Message.type = "ACCEPTREQUEST";
+      this.SendMessage(this.Message);
+    },
+
+        RemoveFriend: function(friendid) {
+      this.Message.body = friendid;
+      this.Message.type = "REMOVEFRIEND";
       this.SendMessage(this.Message);
     },
 
