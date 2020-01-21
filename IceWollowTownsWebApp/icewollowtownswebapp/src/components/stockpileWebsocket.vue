@@ -28,15 +28,15 @@ export default {
       console.log(`[error] ${error.message}`);
     };
 
+    this.$store.dispatch("setSocket", this.Websocket);
+
   },
   methods: {
     SendMessage: function(message) {
-      this.Websocket.send(JSON.stringify(message));
+      this.$store.dispatch("SendMessageToStockpileWebsocket", message);
     },
     messageReceived: function(data) {
       this.Message = JSON.parse(data.data);
-
-      console.log(this.Message)
 
       switch (this.Message.type) {
         case "CONNECT":
