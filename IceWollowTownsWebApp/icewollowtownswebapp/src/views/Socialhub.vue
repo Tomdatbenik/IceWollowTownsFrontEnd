@@ -37,11 +37,14 @@
           <div class="col-6">
             <h6>{{ item.username }}</h6>
           </div>
-          <div class="col-3">
-            <button v-on:click="GetChat(item.id, item.username, item.chatid)">Chat</button>
+          <div class="col-2">
+            <button v-on:click="null">Spectate</button>
           </div>
-          <div class="col-3">
+          <div class="col-2">
             <button v-on:click="RemoveFriend(item.id, item.chatid)">Remove</button>
+          </div>
+          <div class="col-2">
+            <button v-on:click="GetChat(item.id, item.username, item.chatid)">Chat</button>
           </div>
         </div>
       </div>
@@ -51,10 +54,10 @@
           <div class="col-6">
             <h6>{{ item.username }}</h6>
           </div>
-          <div class="col-3" v-if="item.receipiant">
+          <div class="col-2" v-if="item.receipiant">
             <button v-on:click="AcceptFriend(item.id)">Accept</button>
           </div>
-          <div class="col-3">
+          <div class="col-2">
             <button v-on:click="RemoveFriend(item.id, item.chatid)">Remove</button>
           </div>
         </div>
