@@ -5,16 +5,7 @@
 </template>
 
 <script>
-// import VueNativeSock from 'vue-native-websocket'
-import VueNativeSock from "vue-native-websocket";
 import store from "../store/index.js";
-
-import Vue from "vue";
-Vue.use(VueNativeSock, store.getters.getstockpileWS, {
-  reconnection: true, // (Boolean) whether to reconnect automatically (false)
-  reconnectionAttempts: 20, // (Number) number of reconnection attempts before giving up (Infinity),
-  reconnectionDelay: 1000 // (Number) how long to initially wait before attempting a new (1000)
-});
 
 export default {
   name: "stockpileWebsocket",
@@ -24,20 +15,28 @@ export default {
       Message: {
         body: "",
         type: "CONNECT"
-      }
+      },
+      Websocket: null
     };
   },
   mounted: function() {
-    this.$store.dispatch("setSocket", this.$socket);
+    this.Websocket = new WebSocket(store.getters.getstockpileWS);
 
-    this.$options.sockets.onmessage = data => this.messageReceived(data);
+    this.Websocket.onmessage = this.messageReceived;
+
+    this.Websocket.onerror = function(error) {
+      console.log(`[error] ${error.message}`);
+    };
+
   },
   methods: {
     SendMessage: function(message) {
-      this.$store.dispatch("SendMessageToStockpileWebsocket", message);
+      this.Websocket.send(JSON.stringify(message));
     },
     messageReceived: function(data) {
       this.Message = JSON.parse(data.data);
+
+      console.log(this.Message)
 
       switch (this.Message.type) {
         case "CONNECT":
