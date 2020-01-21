@@ -19,7 +19,7 @@
         </thead>
         <tbody>
           <tr v-for="item in $store.getters.Messages" :key="item">
-            <p>{{ item.sendername }} : {{ item.message }}</p>
+            <p class="text-white">{{ item.sendername }} : {{ item.message }}</p>
           </tr>
         </tbody>
       </table>
@@ -37,7 +37,13 @@
           <div class="col-6">
             <h6>{{ item.username }}</h6>
           </div>
-          <div class="col-6">
+          <div class="col-2">
+            <button v-on:click="null">Spectate</button>
+          </div>
+          <div class="col-2">
+            <button v-on:click="RemoveFriend(item.id, item.chatid)">Remove</button>
+          </div>
+          <div class="col-2">
             <button v-on:click="GetChat(item.id, item.username, item.chatid)">Chat</button>
           </div>
         </div>
@@ -48,8 +54,11 @@
           <div class="col-6">
             <h6>{{ item.username }}</h6>
           </div>
-          <div class="col-6" v-if="item.receipiant">
+          <div class="col-2" v-if="item.receipiant">
             <button v-on:click="AcceptFriend(item.id)">Accept</button>
+          </div>
+          <div class="col-2">
+            <button v-on:click="RemoveFriend(item.id, item.chatid)">Remove</button>
           </div>
         </div>
       </div>
@@ -96,17 +105,24 @@ export default {
     },
 
     SendChatMessage: function() {
-        console.log("Last tests")
-        this.Message.body = this.chatmessage;
-        this.Message.type = "SENDMESSAGE";
-        this.Message.friendid = this.$store.getters.ChatId;
-        this.Message.chatname = this.$store.getters.ChatName;
-        this.SendMessage(this.Message);
+      console.log("Last tests");
+      this.Message.body = this.chatmessage;
+      this.Message.type = "SENDMESSAGE";
+      this.Message.friendid = this.$store.getters.ChatId;
+      this.Message.chatname = this.$store.getters.ChatName;
+      this.SendMessage(this.Message);
     },
 
     AcceptFriend: function(friendid) {
       this.Message.body = friendid;
       this.Message.type = "ACCEPTREQUEST";
+      this.SendMessage(this.Message);
+    },
+
+    RemoveFriend: function(friendid, chatid) {
+      this.Message.body = friendid;
+      this.Message.type = "REMOVEFRIEND";
+      this.Message.chatid = chatid;
       this.SendMessage(this.Message);
     },
 

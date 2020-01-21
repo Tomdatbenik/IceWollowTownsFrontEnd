@@ -2,10 +2,10 @@
   <div class="h-100">
     <div class="container-fluid bg-dark fill" v-if="!$store.getters.Loading">
       <div v-if="!$store.getters.SettlementLoading">
-        <StockpileWebsocket />
         <Navigation />
         <router-view />
-        <!-- <Friendlist /> -->
+        <SocialhubWebsocket />
+        <!-- <StockpileWebsocket /> -->
       </div>
       <div v-else class="container-fluid">
         <Loading msg="Loading settlement" />
@@ -64,14 +64,16 @@ body {
 <script>
 import Loading from "./components/Loading";
 import Navigation from "./components/Navigation";
-import StockpileWebsocket from "./components/stockpileWebsocket";
+// import StockpileWebsocket from "./components/stockpileWebsocket";
+import SocialhubWebsocket from "./components/SocialHubWebsocket"
 // import Friendlist from "./components/FriendList";
 
 export default {
   components: {
     Loading,
     Navigation,
-    StockpileWebsocket
+    // StockpileWebsocket,
+    SocialhubWebsocket
     // Friendlist
   }
 };

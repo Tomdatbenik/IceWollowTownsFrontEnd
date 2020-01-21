@@ -30,6 +30,8 @@ export default {
   mounted: function() {
     this.$store.dispatch("setSocket", this.$socket);
 
+    this.$store.dispatch("setStockpileSocket", this.$socket);
+    console.log(this.$socket);
     this.$options.sockets.onmessage = data => this.messageReceived(data);
   },
   methods: {

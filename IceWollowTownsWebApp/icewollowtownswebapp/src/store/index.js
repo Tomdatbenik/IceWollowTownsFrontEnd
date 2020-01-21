@@ -9,6 +9,7 @@ import Guilds from '../store/guilds'
 import Api from '../store/api'
 import Websockets from '../store/websockets'
 import Spectate from '../store/spectate'
+import Socialhub from '../store/socialhub'
 
 Vue.use(Vuex);
 
@@ -19,7 +20,8 @@ export default new Vuex.Store({
     api: Api,
     guilds: Guilds,
     websockets: Websockets,
-    spectate: Spectate
+    spectate: Spectate,
+    socialhub: Socialhub
   },
   state: {
     user: {
