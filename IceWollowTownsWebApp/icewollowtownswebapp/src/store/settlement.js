@@ -82,8 +82,6 @@ export default {
                     }
                 })
                 .then(response => {
-                    console.log("before empty settlement")
-
                     if (response.data == "") {
                         axios.request({
                             method: 'POST',
@@ -127,8 +125,6 @@ export default {
                             });
                     }
                     else {
-                        console.log("it is confused")
-
                         context.commit("SET_SETTLEMENT", response.data)
                         context.commit("SET_RESOURCES", response.data.stockpile);
                         axios

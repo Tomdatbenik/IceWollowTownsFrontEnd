@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in $store.getters.Messages" :key="item">
+          <tr v-for="item in $store.getters.Messages" :key="item.id">
             <p class="text-white">{{ item.sendername }} : {{ item.message }}</p>
           </tr>
         </tbody>
@@ -32,7 +32,7 @@
         v-on:click="AddFriend()"
       >Add friend</button>
       <h3>friends</h3>
-      <div v-for="item in $store.getters.Friends" :key="item">
+      <div v-for="item in $store.getters.Friends" :key="item.id">
         <div class="row mt-2" v-if="item.status == 'ACCEPTED'">
           <div class="col-6">
             <h6>{{ item.username }}</h6>

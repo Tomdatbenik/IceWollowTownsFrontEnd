@@ -29,7 +29,7 @@ export default {
     };
 
     this.$store.dispatch("setStockpileSocket", this.$socket);
-    console.log(this.$socket);
+
     this.$options.sockets.onmessage = data => this.messageReceived(data);
   },
   methods: {
@@ -38,8 +38,6 @@ export default {
     },
     messageReceived: function(data) {
       this.Message = JSON.parse(data.data);
-
-      console.log(this.Message)
 
       switch (this.Message.type) {
         case "CONNECT":
