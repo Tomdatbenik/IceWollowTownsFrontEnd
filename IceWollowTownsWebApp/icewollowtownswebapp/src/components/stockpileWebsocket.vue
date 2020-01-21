@@ -28,6 +28,9 @@ export default {
       console.log(`[error] ${error.message}`);
     };
 
+    this.$store.dispatch("setStockpileSocket", this.$socket);
+    console.log(this.$socket);
+    this.$options.sockets.onmessage = data => this.messageReceived(data);
   },
   methods: {
     SendMessage: function(message) {
